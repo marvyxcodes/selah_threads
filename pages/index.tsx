@@ -15,7 +15,7 @@ export default function Home() {
         />
       </Head>
 
-      <TSplayground />
+      {/* <TSplayground /> */}
 
       <main className={styles.main}></main>
 

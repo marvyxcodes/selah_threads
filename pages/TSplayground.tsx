@@ -15,7 +15,6 @@ function TSplayground() {
     }
   }
 
-  welcomePeople(["marvin", "jose", "hector"]);
   return <h1>playgroundTest</h1>;
 }
 
