@@ -15,9 +15,9 @@ export default function Home() {
         />
       </Head>
 
-      {/* <TSplayground /> */}
-
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <h1></h1>
+      </main>
 
       <footer className={styles.footer}>
         Copyright @ WeebMania Inc. Powered by{" "}

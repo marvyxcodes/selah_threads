@@ -44,6 +44,11 @@
   @apply flex;
 }
 
+.sub-menu {
+  display: block;
+  position: absolute;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
