@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import React, {
+  ChangeEvent,
+  EventHandler,
+  MouseEvent,
+  MouseEventHandler,
+  SyntheticEvent,
+  useState,
+} from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
-import NavSubMenu from "./navSubMenu";
+import NavSubMenu from "./NavSubMenu";
 import Link from "next/link";
 
 function Navbar() {
-  const [showSubMenu, setShowSubMenu] = useState(true);
+  const [showSubMenu, setShowSubMenu] = useState(false);
+  const [currentSubMenu, setcurrentSubMenu] = useState("");
 
-  function handleHover() {
+  function handleMouseOver(e: React.SyntheticEvent) {
+    e.preventDefault();
+    let subMenu = (e.target as HTMLInputElement).id;
     setShowSubMenu(true);
+    setcurrentSubMenu(subMenu);
   }
 
   function handleMouseOut() {
     setShowSubMenu(false);
   }
 
-  console.log(showSubMenu);
-
   return (
-    <header className="shadow">
+    <header className="shadow sticky top-0">
       <nav className="nav h-16 flex justify-evenly items-center">
         <div className="primary-nav flex items-center">
           <Link href="/">
@@ -39,19 +48,27 @@ function Navbar() {
             </li>
             <li>
               <Link
+                id="collections"
                 href="/collections"
-                onMouseOver={handleHover}
+                onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
               >
                 COLLECTIONS
               </Link>
-              {showSubMenu && <NavSubMenu menuCategory={"Collections"} />}
             </li>
             <li>
-              <a>CLOTHING</a>
+              <Link
+                id="clothing"
+                href="/clothing"
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+              >
+                CLOTHING
+              </Link>
             </li>
           </ul>
         </div>
+        <NavSubMenu menuCategory={currentSubMenu} showSubMenu={showSubMenu} />
         <div className="secondary-nav">
           <ul className={styles.navLinks}>
             <li>

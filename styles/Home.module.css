@@ -42,11 +42,21 @@
 .navLinks {
   gap: 0 1rem;
   @apply flex;
+  height: 100%;
+}
+.navLinks li {
+  height: 100%;
 }
 
 .sub-menu {
-  display: block;
+  transition: opacity 0.2s;
+  background-color: grey;
   position: absolute;
+  top: 80px;
+  width: 100vw;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
