@@ -12,7 +12,7 @@ import NavSubMenu from "./NavSubMenu";
 import Link from "next/link";
 
 function Navbar() {
-  const [showSubMenu, setShowSubMenu] = useState(false);
+  const [showSubMenu, setShowSubMenu] = useState(true);
   const [currentSubMenu, setcurrentSubMenu] = useState("");
 
   function handleMouseOver(e: React.SyntheticEvent) {
@@ -23,7 +23,7 @@ function Navbar() {
   }
 
   function handleMouseOut() {
-    setShowSubMenu(false);
+    // setShowSubMenu(false);
   }
 
   return (

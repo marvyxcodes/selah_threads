@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
+import uniqid from "uniqid";
 
 function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
   const { menuCategory, showSubMenu } = props;
@@ -12,15 +13,53 @@ function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
     "My Hero Academia",
   ];
 
-  let clothing = [];
+  let clothing = [
+    {
+      category: "Unisex",
+      hoodies: "Hoodies",
+      shirts: "T-Shirts",
+      sweaters: "Sweaters",
+      pants: "pants",
+    },
+    {
+      category: "Women",
+      body: "Body",
+      top: "Top",
+      shorts: "Shorts",
+    },
+    {
+      category: "Men",
+      pants: "Pants",
+      suits: "Suits",
+    },
+  ];
 
-  // function mountSubMenu(propString: string) {
-  //   propString === "collections" &&
-  //     // temporary index key //
-  //     collections.map((item, index) => {
-  //       return <li key={index}>{item}</li>;
-  //     });
-  // }
+  function mountSubMenu(str: string) {
+    let subMenu;
+
+    if (str === "") subMenu = <li></li>;
+
+    if (str === "collections") {
+      subMenu = collections.map((item) => {
+        return (
+          <li key={uniqid()} id={uniqid()}>
+            {item}
+          </li>
+        );
+      });
+    } else if (str === "clothing") {
+      subMenu = clothing.map((list) => {
+        return (
+          <ul key={uniqid()}>
+            <a>{list.category}</a>
+            <li></li>
+          </ul>
+        );
+      });
+    }
+
+    return subMenu;
+  }
 
   return (
     <div
@@ -33,9 +72,7 @@ function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
           : { opacity: "0" }
       }
     >
-      <ul className="subMenu-list">
-        <li className="subMenu-list_Item">Hello World</li>
-      </ul>
+      <ul className="subMenu-list">{mountSubMenu(menuCategory)}</ul>
     </div>
   );
 }
