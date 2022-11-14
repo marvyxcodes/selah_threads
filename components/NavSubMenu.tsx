@@ -1,9 +1,9 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import styles from "../styles/Home.module.css";
 import uniqid from "uniqid";
 
-function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
-  const { menuCategory, showSubMenu } = props;
+function NavSubMenu(props: { handleMouseOut: MouseEventHandler; handleMouseOver: MouseEventHandler; menuCategory: string; showSubMenu: boolean }) {
+  const { menuCategory, showSubMenu, handleMouseOver, handleMouseOut} = props;
 
   let collections = [
     "One Piece",
@@ -19,7 +19,7 @@ function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
       hoodies: "Hoodies",
       shirts: "T-Shirts",
       sweaters: "Sweaters",
-      pants: "pants",
+      pants: "Pants",
     },
     {
       category: "Women",
@@ -29,6 +29,7 @@ function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
     },
     {
       category: "Men",
+      shorts: "Shorts",
       pants: "Pants",
       suits: "Suits",
     },
@@ -47,32 +48,38 @@ function NavSubMenu(props: { menuCategory: string; showSubMenu: boolean }) {
           </li>
         );
       });
-    } else if (str === "clothing") {
-      subMenu = clothing.map((list) => {
-        return (
-          <ul key={uniqid()}>
-            <a>{list.category}</a>
-            <li></li>
-          </ul>
-        );
-      });
     }
+    // } else if (str === "clothing") {
+    //   // loop through array of clothing category objects
+    //   // display every category into a separate <li> element
+
+    //   subMenu = clothing.map((list) => {
+        
+    //   });
+    // }
 
     return subMenu;
   }
 
+
   return (
     <div
+    onMouseOver={handleMouseOver}
+    onMouseOut={handleMouseOut}
       className={styles["sub-menu"]}
       style={
         showSubMenu
           ? {
               opacity: "1",
+              visibility: "visible",
             }
-          : { opacity: "0" }
+          : { opacity: "0",
+              visibility: 'hidden',
+             }
       }
     >
-      <ul className="subMenu-list">{mountSubMenu(menuCategory)}</ul>
+      <ul className="subMenu-list"
+      >{mountSubMenu(menuCategory)}</ul>
     </div>
   );
 }

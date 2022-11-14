@@ -1,9 +1,4 @@
 import React, {
-  ChangeEvent,
-  EventHandler,
-  MouseEvent,
-  MouseEventHandler,
-  SyntheticEvent,
   useState,
 } from "react";
 import styles from "../styles/Home.module.css";
@@ -12,7 +7,7 @@ import NavSubMenu from "./NavSubMenu";
 import Link from "next/link";
 
 function Navbar() {
-  const [showSubMenu, setShowSubMenu] = useState(true);
+  const [showSubMenu, setShowSubMenu] = useState(false);
   const [currentSubMenu, setcurrentSubMenu] = useState("");
 
   function handleMouseOver(e: React.SyntheticEvent) {
@@ -23,52 +18,53 @@ function Navbar() {
   }
 
   function handleMouseOut() {
-    // setShowSubMenu(false);
+    setShowSubMenu(false);
   }
 
   return (
     <header className="shadow sticky top-0">
-      <nav className="nav h-16 flex justify-evenly items-center">
+      <nav className="nav h-full flex justify-evenly items-center">
         <div className="primary-nav flex items-center">
-          <Link href="/">
+          <Link className='logo' href="/">
             <Image
-              className="logo"
               src="/weebLogo.svg"
               alt="Weeb Logo"
               width={100}
               height={20}
             />
           </Link>
-          <ul className={styles.navLinks}>
+          <ul className={`nav-list ${styles.navLinks}`}>
             <li>
               <a>NEW</a>
             </li>
             <li>
               <a>LIMITED EDITION</a>
             </li>
-            <li>
+            <li
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}>
               <Link
                 id="collections"
                 href="/collections"
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
+                
               >
                 COLLECTIONS
               </Link>
             </li>
-            <li>
+            <li
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}>
               <Link
                 id="clothing"
                 href="/clothing"
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
+                
               >
                 CLOTHING
               </Link>
             </li>
           </ul>
         </div>
-        <NavSubMenu menuCategory={currentSubMenu} showSubMenu={showSubMenu} />
+        <NavSubMenu handleMouseOver={handleMouseOver} handleMouseOut={handleMouseOut} menuCategory={currentSubMenu} showSubMenu={showSubMenu} />
         <div className="secondary-nav">
           <ul className={styles.navLinks}>
             <li>

@@ -42,19 +42,14 @@
 .navLinks {
   gap: 0 1rem;
   @apply flex;
-  height: 100%;
 }
-.navLinks li {
-  height: 100%;
-}
-
-.sub-menu {
+5 .sub-menu {
   transition: opacity 0.2s;
   background-color: grey;
   position: absolute;
   top: 80px;
   width: 100vw;
-  min-height: 300px;
+  min-height: 220px;
   display: flex;
   justify-content: center;
 }
