@@ -43,15 +43,37 @@
   gap: 0 1rem;
   @apply flex;
 }
-5 .sub-menu {
+.sub-menu {
   transition: opacity 0.2s;
-  background-color: grey;
+  background-color: rgb(233, 233, 233);
   position: absolute;
   top: 80px;
+  left: 0;
   width: 100vw;
   min-height: 220px;
   display: flex;
   justify-content: center;
+}
+
+.subMenu {
+  display: flex;
+  width: 80%;
+}
+
+.sub-list {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: baseline;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.sub-list li {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
 @media (max-width: 600px) {

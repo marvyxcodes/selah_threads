@@ -4,8 +4,6 @@ import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
-
-  
   return (
     <div className={styles.container}>
       <Head>
@@ -16,9 +14,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className={styles.main}>
-        <h1></h1>
-      </main>
+      <main className={styles.main}></main>
 
       <footer className={styles.footer}>
         Copyright @ WeebMania Inc. Powered by{" "}

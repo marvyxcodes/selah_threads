@@ -1,17 +1,27 @@
 import React, { MouseEventHandler } from "react";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import uniqid from "uniqid";
 
-function NavSubMenu(props: { handleMouseOut: MouseEventHandler; handleMouseOver: MouseEventHandler; menuCategory: string; showSubMenu: boolean }) {
-  const { menuCategory, showSubMenu, handleMouseOver, handleMouseOut} = props;
+function NavSubMenu(props: {
+  handleMouseOver: MouseEventHandler;
+  showSubMenu: boolean;
+  currentSubMenu: string;
+}) {
+  const { showSubMenu, handleMouseOver, currentSubMenu } = props;
 
   let collections = [
-    "One Piece",
-    "Naruto",
-    "Demon Slayer",
-    "Attack on Titan",
-    "My Hero Academia",
+    {
+      anime: "One Piece",
+      src: "/onepiece.jpg",
+      link: "/collections/one-piece",
+    },
+    { anime: "Naruto", src: "/naruto.jpg", link: "/collections/naruto" },
+    { anime: "Demon Slayer", src: "/demonSlay.jpg", link: "" },
+    { anime: "Attack on Titan", src: "/aot.png", link: "" },
+    { anime: "My Hero Academia", src: "/MHA.jpg", link: "" },
   ];
+
+  // refactor into pictures boxes ^
 
   let clothing = [
     {
@@ -35,37 +45,31 @@ function NavSubMenu(props: { handleMouseOut: MouseEventHandler; handleMouseOver:
     },
   ];
 
-  function mountSubMenu(str: string) {
-    let subMenu;
+  let listElements;
 
-    if (str === "") subMenu = <li></li>;
-
-    if (str === "collections") {
-      subMenu = collections.map((item) => {
-        return (
-          <li key={uniqid()} id={uniqid()}>
-            {item}
-          </li>
-        );
-      });
-    }
-    // } else if (str === "clothing") {
-    //   // loop through array of clothing category objects
-    //   // display every category into a separate <li> element
-
-    //   subMenu = clothing.map((list) => {
-        
-    //   });
-    // }
-
-    return subMenu;
+  if (currentSubMenu === "collections") {
+    listElements = collections.map((obj) => {
+      return (
+        <li key={obj.anime} className={styles["colletions-list"]}>
+          <a href={obj.link}>
+            <Image
+              className="collectionsImg"
+              alt={obj.anime}
+              src={obj.src}
+              width={140}
+              height={100}
+            />
+            <p>{obj.anime}</p>
+          </a>
+        </li>
+      );
+    });
+  } else if (currentSubMenu === "clothing") {
   }
-
 
   return (
     <div
-    onMouseOver={handleMouseOver}
-    onMouseOut={handleMouseOut}
+      onMouseOver={handleMouseOver}
       className={styles["sub-menu"]}
       style={
         showSubMenu
@@ -73,18 +77,12 @@ function NavSubMenu(props: { handleMouseOut: MouseEventHandler; handleMouseOver:
               opacity: "1",
               visibility: "visible",
             }
-          : { opacity: "0",
-              visibility: 'hidden',
-             }
+          : { opacity: "0", visibility: "hidden" }
       }
     >
-      <ul className="subMenu-list"
-      >{mountSubMenu(menuCategory)}</ul>
+      <ul className={styles["sub-list"]}>{listElements}</ul>
     </div>
   );
 }
 
 export default NavSubMenu;
-
-// When i hover over the menu item I want the subMenu to appear
-// sub Menu should appear and also show whatever the menu item is taht is hovered over

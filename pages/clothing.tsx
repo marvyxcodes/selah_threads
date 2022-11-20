@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
 function clothing() {
   return (
     <article>
-        <div className='banner'></div>
-        <div className='categories-div'>
-        clothing page
-        </div>
+      <div className="banner">
+        <div>breadcrumb here</div>
+      </div>
     </article>
-  )
+  );
 }
 
-export default clothing
+export default clothing;

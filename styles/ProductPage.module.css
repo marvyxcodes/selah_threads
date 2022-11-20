@@ -1,0 +1,17 @@
+.product-container {
+}
+
+.bread-crumbs {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 16px;
+}
+.product-banner {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.breadNav {
+  margin-top: 5rem;
+}

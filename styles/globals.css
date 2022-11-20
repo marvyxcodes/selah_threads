@@ -16,9 +16,7 @@ header {
 
 .primary-nav {
   height: 100%;
-  
 }
-
 
 #__next {
   position: relative;
@@ -35,21 +33,28 @@ a {
   box-sizing: border-box;
 }
 
-.logo {
+.nav-list,
+.nav-list li {
   height: 100%;
-  margin-right: 1rem;
 }
 
-.nav-list, .nav-list li{
-  height: 100%;
+.logo {
+  position: relative;
+  width: 100px;
+  height: 80px;
 }
 
 .nav-list li {
-  display:flex;
+  display: flex;
   justify-content: center;
   min-width: 120px;
   align-items: center;
   cursor: pointer;
+}
+
+.collectionsImg {
+  width: auto;
+  height: auto;
 }
 
 .nav-icon {
