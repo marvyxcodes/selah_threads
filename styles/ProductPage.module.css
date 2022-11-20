@@ -15,3 +15,28 @@
 .breadNav {
   margin-top: 5rem;
 }
+
+.filterNav {
+  display: flex;
+  align-items: center;
+}
+
+.filterList {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.filterList li {
+  padding: 0.4rem 1rem;
+  margin: 0 0.7rem;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 6px;
+}
+
+.filterDropDown {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 6px;
+  max-height: 50px;
+}

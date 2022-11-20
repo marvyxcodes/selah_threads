@@ -2,21 +2,16 @@ import React, { useState, useEffect } from "react";
 import styles from "styles/ProductPage.module.css";
 import Image from "next/image";
 import BreadCrumb from "../../components/BreadCrumb";
-import { data } from "../dummyData/data";
+import FilterNavigationBar from "../../components/FilterNavigationBar";
+
+// after everything go over and see what can be component vs on page
 
 export default function productPage(products: object) {
   // this page will act as default template for items, but items will be dynamically pulled by render
 
-  console.log(products);
-
-  function handleFetch() {
-    fetch("/api/productData");
-  }
-
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
-      <button onClick={handleFetch}>fetch data</button>
       <div className={styles["product-banner"]}>
         <Image
           src="/onePieceBanner.png"
@@ -25,22 +20,27 @@ export default function productPage(products: object) {
           height="300"
         />
       </div>
+
+      <FilterNavigationBar />
     </section>
   );
+}
+
+export async function getStaticProps() {
+  let res = await fetch("http://localhost:4000/products");
+  let data = await res.json();
+
+  console.log(data);
+  return {
+    props: {
+      data,
+    },
+  };
 }
 
 export async function getStaticPaths() {
   return {
     paths: [{ params: { collection: "one-piece" } }],
     fallback: false,
-  };
-}
-
-export async function getStaticProps() {
-  // call api to get props //
-  return {
-    props: {
-      data,
-    },
   };
 }
