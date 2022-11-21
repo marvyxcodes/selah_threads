@@ -16,9 +16,21 @@ function NavSubMenu(props: {
       link: "/collections/one-piece",
     },
     { anime: "Naruto", src: "/naruto.jpg", link: "/collections/naruto" },
-    { anime: "Demon Slayer", src: "/demonSlay.jpg", link: "" },
-    { anime: "Attack on Titan", src: "/aot.png", link: "" },
-    { anime: "My Hero Academia", src: "/MHA.jpg", link: "" },
+    {
+      anime: "Demon Slayer",
+      src: "/demonSlay.jpg",
+      link: "/collections/demon-slayer",
+    },
+    {
+      anime: "Attack on Titan",
+      src: "/aot.png",
+      link: "/collections/attack-on-titan",
+    },
+    {
+      anime: "My Hero Academia",
+      src: "/MHA.jpg",
+      link: "/collections/my-hero-academia",
+    },
   ];
 
   // refactor into pictures boxes ^

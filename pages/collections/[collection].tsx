@@ -3,11 +3,18 @@ import styles from "styles/ProductPage.module.css";
 import Image from "next/image";
 import BreadCrumb from "../../components/BreadCrumb";
 import FilterNavigationBar from "../../components/FilterNavigationBar";
+import { useRouter } from "next/router";
 
 // after everything go over and see what can be component vs on page
 
-export default function productPage(products: object) {
+export default function CollectionPage(products: object) {
   // this page will act as default template for items, but items will be dynamically pulled by render
+
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <section className={styles["product-container"]}>
@@ -26,11 +33,19 @@ export default function productPage(products: object) {
   );
 }
 
-export async function getStaticProps() {
-  let res = await fetch("http://localhost:4000/products");
-  let data = await res.json();
+interface paramsObj {
+  params: { collection: string };
+}
 
-  console.log(data);
+export async function getStaticProps(context: paramsObj) {
+  console.log(context);
+  const { params } = context;
+  let res = await fetch(
+    `http://localhost:3000/api/collectionsAPI/${params.collection}`
+  );
+  let data = await res.json();
+  // console.log(data);
+
   return {
     props: {
       data,
@@ -41,6 +56,6 @@ export async function getStaticProps() {
 export async function getStaticPaths() {
   return {
     paths: [{ params: { collection: "one-piece" } }],
-    fallback: false,
+    fallback: true,
   };
 }
