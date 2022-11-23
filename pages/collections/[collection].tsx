@@ -38,13 +38,12 @@ interface paramsObj {
 }
 
 export async function getStaticProps(context: paramsObj) {
-  console.log(context);
   const { params } = context;
   let res = await fetch(
     `http://localhost:3000/api/collectionsAPI/${params.collection}`
   );
+
   let data = await res.json();
-  // console.log(data);
 
   return {
     props: {
