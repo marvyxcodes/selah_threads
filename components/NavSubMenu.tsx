@@ -57,6 +57,7 @@ function NavSubMenu(props: {
     },
   ];
 
+  // git test
   let listElements;
 
   if (currentSubMenu === "collections") {

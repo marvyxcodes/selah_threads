@@ -10,8 +10,10 @@ const animeSchema = new mongoose.Schema({
   clothesType: String,
 });
 
-const animeCollection =
-  mongoose.models["Anime Collection"] ||
-  mongoose.model("Anime Collection", animeSchema);
+// const onePieceCollection =
+//   mongoose.models["one-piece"] || mongoose.model("one-piece", animeSchema);
 
-export default animeCollection;
+// const narutoCollection =
+//   mongoose.models["naruto"] || mongoose.model("naruto", animeSchema);
+
+export { animeSchema };

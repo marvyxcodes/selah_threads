@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-
+import mongoose from "mongoose";
 import main from "../../../mongoDB/connect";
-import animeCollection from "../../../mongoDB/schema";
+import { animeSchema } from "../../../mongoDB/schema";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,8 +10,11 @@ export default async function handler(
 ) {
   main().catch((error) => console.error(error));
 
-  // const create = new animeCollection({
-  //   anime: "Naruto",
+  let colModel2 = mongoose.models["one-piece"];
+  let colModel = mongoose.model("one-piece", animeSchema);
+
+  // const create = new onePieceCollection({
+  //   anime: "one-piece",
   //   imgSrc: "test",
   //   clothesType: "shirt",
   // });
@@ -20,7 +23,7 @@ export default async function handler(
   //   res.status(200).json(create);
   // });
 
-  const response = await animeCollection.find({}).exec();
+  const response = await colModel2.find({}).exec();
 
   return res.status(200).json({ response });
 }

@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import main from "../../../mongoDB/connect";
-import animeCollection from "../../../mongoDB/schema";
+import { onePieceCollection } from "../../../mongoDB/schema";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   main().catch((error) => console.error(error));
 
-  // const create = new animeCollection({
+  // const create = new onePieceCollection({
   //   anime: "Naruto",
   //   imgSrc: "test",
   //   clothesType: "shirt",
@@ -20,7 +20,7 @@ export default async function handler(
   //   res.status(200).json(create);
   // });
 
-  const response = await animeCollection.find({}).exec();
+  const response = await onePieceCollection.find({}).exec();
 
   return res.status(200).json({ response });
 }
