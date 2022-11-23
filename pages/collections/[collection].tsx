@@ -45,6 +45,8 @@ export async function getStaticProps(context: paramsObj) {
 
   let data = await res.json();
 
+  console.log(data);
+
   return {
     props: {
       data,
