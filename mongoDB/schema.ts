@@ -10,5 +10,11 @@ const animeSchema = new mongoose.Schema({
   clothesType: String,
 });
 
+const productSchema = new mongoose.Schema({
+  name: String,
+  desc: String,
+  category_id: 
+})
+
 
 export { animeSchema };

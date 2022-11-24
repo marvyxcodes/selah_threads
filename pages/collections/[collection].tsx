@@ -23,7 +23,6 @@ export default function CollectionPage(products: staticProps) {
     return <div>Loading...</div>;
   }
 
-  console.log(propsData);
 
   return (
     <section className={styles["product-container"]}>

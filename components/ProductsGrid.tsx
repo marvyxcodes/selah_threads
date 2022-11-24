@@ -1,4 +1,5 @@
-import React, { PropsWithRef, ReactPropTypes } from "react";
+import React, { ReactPropTypes } from "react";
+import { JsxAttribute } from "typescript";
 
 // type collectionObj = {
 //   _id: string;
@@ -9,9 +10,18 @@ import React, { PropsWithRef, ReactPropTypes } from "react";
 // };
 // props: collectionObj[]
 
-function ProductsGrid() {
-  // console.log(props);
-  return <div>ProductsGrid</div>;
+function ProductsGrid (props) {
+  const {productData} = props;
+  
+  console.log("props pG: ", props);
+
+  let gridEl = productData.map(product => {
+    return <div>
+      <h1>{product.anime}</h1>
+      <p>{product.imgSrc}</p>
+    </div>
+  })
+  return <>{gridEl}</>;
 }
 
 export default ProductsGrid;
