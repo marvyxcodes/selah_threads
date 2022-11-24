@@ -4,31 +4,33 @@ import mongoose from "mongoose";
 import main from "../../../mongoDB/connect";
 import { animeSchema } from "../../../mongoDB/schema";
 
+// API route supplies props for collections pages dynamically
+// Pulls in database collection based on URL param query.
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   main().catch((error) => console.error(error));
-  let collection =  req.query.collectionId as string
-  console.log(collection)
+  let collection = req.query.collectionId as string;
 
-  console.log(collection);
-  let colModel = mongoose.models[collection] || mongoose.model(collection, animeSchema)
-
-  // const create = new onePieceCollection({
-  //   anime: "one-piece",
-  //   imgSrc: "test",
-  //   clothesType: "shirt",
-  // });
-
-  // create.save().then(() => {
-  //   res.status(200).json(create);
-  // });
+  let colModel =
+    mongoose.models[collection] || mongoose.model(collection, animeSchema);
 
   const response = await colModel.find({}).exec();
-  mongoose.connection.close();
+
+  // do not close connection to DB. Causes crash out.
 
   return res.status(200).json(response);
 }
 
-// learn how to properly work with API and fetch here
+// KEEP FOR FUTURE REF
+// const create = new onePieceCollection({
+//   anime: "one-piece",
+//   imgSrc: "test",
+//   clothesType: "shirt",
+// });
+
+// create.save().then(() => {
+//   res.status(200).json(create);
+// });

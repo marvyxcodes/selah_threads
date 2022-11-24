@@ -4,11 +4,18 @@ import Image from "next/image";
 import BreadCrumb from "../../components/BreadCrumb";
 import FilterNavigationBar from "../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
+import ProductsGrid from "../../components/ProductsGrid";
 
 // after everything go over and see what can be component vs on page
 
-export default function CollectionPage(products: object) {
+type staticProps = {
+  data: Array<object>;
+};
+
+export default function CollectionPage(products: staticProps) {
   // this page will act as default template for items, but items will be dynamically pulled by render
+
+  const propsData = products.data;
 
   const router = useRouter();
 
@@ -16,12 +23,14 @@ export default function CollectionPage(products: object) {
     return <div>Loading...</div>;
   }
 
+  console.log(propsData);
+
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
       <div className={styles["product-banner"]}>
         <Image
-          src="/onePieceBanner.png"
+          src={"/onePieceBanner.png"}
           alt="One Piece Banner"
           width="1000"
           height="300"
@@ -29,6 +38,8 @@ export default function CollectionPage(products: object) {
       </div>
 
       <FilterNavigationBar />
+
+      <ProductsGrid productData={propsData} />
     </section>
   );
 }
@@ -44,8 +55,6 @@ export async function getStaticProps(context: paramsObj) {
   );
 
   let data = await res.json();
-
-  console.log(data);
 
   return {
     props: {

@@ -14,12 +14,8 @@ let data = [
   },
 ];
 
-main().catch((err) => console.error(err));
-
 let onePieceModel = mongoose.models["one-piece"];
 
 onePieceModel.insertMany(data).exec((err) => {
   console.log(err);
 });
-
-mongoose.connection.close();
