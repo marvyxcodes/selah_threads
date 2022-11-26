@@ -37,4 +37,5 @@ next-env.d.ts
 
 
 # MongoDB
-/mongoDB/connect.ts
+mongoDB/connect.ts
+populateDB.js

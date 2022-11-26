@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
 import main from "../../../mongoDB/connect";
-import { animeSchema } from "../../../mongoDB/schema";
+import Product from "../../../mongoDB/Models/product";
 
 // API route supplies props for collections pages dynamically
 // Pulls in database collection based on URL param query.
@@ -12,14 +12,18 @@ export default async function handler(
   res: NextApiResponse
 ) {
   main().catch((error) => console.error(error));
+
   let collection = req.query.collectionId as string;
 
-  let colModel =
-    mongoose.models[collection] || mongoose.model(collection, animeSchema);
+  console.log("collection query: ", collection);
 
-  const response = await colModel.find({}).exec();
+  const response = await Product.find({ collection }).exec();
+
+  // console.log("COLLECTION: ", collection);
 
   // do not close connection to DB. Causes crash out.
+
+  // mongoose.connection.close();
 
   return res.status(200).json(response);
 }

@@ -10,17 +10,19 @@ import { JsxAttribute } from "typescript";
 // };
 // props: collectionObj[]
 
-function ProductsGrid (props) {
-  const {productData} = props;
-  
+function ProductsGrid(props) {
+  const { productData } = props;
+
   console.log("props pG: ", props);
 
-  let gridEl = productData.map(product => {
-    return <div>
-      <h1>{product.anime}</h1>
-      <p>{product.imgSrc}</p>
-    </div>
-  })
+  let gridEl = productData.map((product) => {
+    return (
+      <div key={product.anime}>
+        <h1>{product.anime}</h1>
+        <img alt="product image" src={product.url} />
+      </div>
+    );
+  });
   return <>{gridEl}</>;
 }
 

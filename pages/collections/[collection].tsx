@@ -23,7 +23,6 @@ export default function CollectionPage(products: staticProps) {
     return <div>Loading...</div>;
   }
 
-
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
@@ -50,8 +49,10 @@ interface paramsObj {
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
   let res = await fetch(
-    `http://localhost:3000/api/collectionsAPI/${params.collection}`
+    `http://localhost:3000/api/collections/${params.collection}`
   );
+
+  // console.log("response: ", res);
 
   let data = await res.json();
 
