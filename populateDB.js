@@ -18,8 +18,9 @@ if (!userArgs[0].startsWith("mongodb")) {
 
 const productSchema = new mongoose.Schema({
   category: { type: String, required: true },
-  anime: { type: String, required: true },
-  name: { type: String, required: true },
+  pathName: { type: String, required: true },
+  animeName: { type: String, required: true },
+  title: { type: String, required: true },
   desc: { type: String },
   url: { type: String },
   price: { type: Number, required: true },
@@ -70,36 +71,29 @@ function productCreate(category, anime, name, desc, url, price, inventory, cb) {
 function createProducts(cb) {
   async.parallel(
     [
+      //  ONE PIECE MERCH //
+      /////////////////////
       function (callback) {
         productCreate(
           "Shirts",
           "one-piece",
+          "One Piece",
           "Luffy Nika Shirt",
-          "Luffy Nika T-shirt",
+          "",
           "https://ih1.redbubble.net/image.3908212064.4596/ssrco,slim_fit_t_shirt,flatlay,e5d6c5:f62bbf65ee,front,wide_portrait,750x1000-bg,f8f8f8.jpg",
           25.0,
           8,
           callback
         );
       },
-      function (callback) {
-        productCreate(
-          "Hoodies",
-          "naruto",
-          "Naruto Sage Hoodie",
-          "Naruto Sage Hoodie",
-          "https://nikifilini.com/wp-content/uploads/2022/11/hoodie-SENNIN-1-1080x1438.jpg",
-          120,
-          10,
-          callback
-        );
-      },
+
       function (callback) {
         productCreate(
           "Hoodies",
           "one-piece",
+          "One Piece",
           "Tony Tony Chopper Xmas Hoodie",
-          "Chopper Hoodie",
+          "",
           "https://onepiece.store/wp-content/uploads/2022/11/product-image-1874994975_720x.webp",
           40,
           10,
@@ -110,8 +104,9 @@ function createProducts(cb) {
         productCreate(
           "Sweatshirts",
           "one-piece",
+          "One Piece",
           "Robin Sweatshirt",
-          "Robin Panels Sweatshirt",
+          "",
           "https://cdn.shopify.com/s/files/1/0014/2648/9388/products/ripple-junction-hoodies-outerwear-one-piece-robin-panels-crew-sweatshirt-crunchyroll-exclusive-28911694676012_900x900.jpg?v=1634146797",
           40,
           10,
@@ -122,8 +117,9 @@ function createProducts(cb) {
         productCreate(
           "Hoodies",
           "one-piece",
+          "One Piece",
           "Trafalgar Law Hoodie",
-          "Trafalgar Hoodie",
+          "",
           "https://m.media-amazon.com/images/I/61ySNw2dkxL._AC_UX679_.jpg",
           40,
           10,
@@ -134,8 +130,9 @@ function createProducts(cb) {
         productCreate(
           "Pants",
           "one-piece",
+          "One Piece",
           "Zoro Pants",
-          "Zoro Loungewear pants",
+          "",
           "https://m.media-amazon.com/images/I/41Ww3iYaxHL._AC_UY741_.jpg",
           40,
           10,
@@ -146,8 +143,9 @@ function createProducts(cb) {
         productCreate(
           "Hoodies",
           "one-piece",
+          "One Piece",
           "Zoro Hoodie Pink",
-          "Pink Zoro Hoodie",
+          "",
           "https://m.media-amazon.com/images/I/61rfty5xhdL._AC_UX679_.jpg",
           40,
           10,
@@ -158,8 +156,9 @@ function createProducts(cb) {
         productCreate(
           "Hoodies",
           "one-piece",
+          "One Piece",
           "Straw Hats Hoodie",
-          "Beige Hoodie",
+          "",
           "https://m.media-amazon.com/images/I/610zqTOvbAL._AC_UX679_.jpg",
           40,
           10,
@@ -170,8 +169,9 @@ function createProducts(cb) {
         productCreate(
           "T Shirt",
           "one-piece",
+          "One Piece",
           "Brook World Tour",
-          "Brook T shirt",
+          "",
           "https://m.media-amazon.com/images/I/51MMHs1FcAS._AC_UX679_.jpg",
           40,
           10,
@@ -182,10 +182,79 @@ function createProducts(cb) {
         productCreate(
           "Beanie",
           "one-piece",
+          "One Piece",
           "Zoro Green Beanie",
-          "Green Beanie",
+          "",
           "https://m.media-amazon.com/images/I/81wki+lHZOL._AC_UX679_.jpg",
           40,
+          10,
+          callback
+        );
+      },
+
+      //  NARUTO MERCHANDISE //
+      ////////////////////////
+      function (callback) {
+        productCreate(
+          "Hoodies",
+          "naruto",
+          "Naruto",
+          "Naruto Sage Hoodie",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2022/11/hoodie-SENNIN-1-1080x1438.jpg",
+          120,
+          10,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Hoodies",
+          "naruto",
+          "Naruto",
+          "Dark Sasuke",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2022/05/IMG_3482-1-scaled-320x424.jpg",
+          120,
+          10,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Hoodies",
+          "naruto",
+          "Naruto",
+          "Kaguya Sweatshirt",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2022/01/svitshot-ICE-KAGUYA-1-scaled.jpg",
+          120,
+          10,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Hoodies",
+          "naruto",
+          "Naruto",
+          "Pain Pants",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2021/07/shtany5-scaled.jpg",
+          120,
+          10,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Hoodies",
+          "naruto",
+          "Naruto",
+          "Pain Pants",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2021/07/shtany5-scaled.jpg",
+          120,
           10,
           callback
         );
