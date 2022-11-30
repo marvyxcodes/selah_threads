@@ -14,16 +14,9 @@ export default async function handler(
   main().catch((error) => console.error(error));
 
   let collection = req.query.collectionId as string;
-
   console.log("collection query: ", collection);
 
-  const response = await Product.find({ collection }).exec();
-
-  // console.log("COLLECTION: ", collection);
-
-  // do not close connection to DB. Causes crash out.
-
-  // mongoose.connection.close();
+  const response = await Product.find({ pathName: collection }).exec();
 
   return res.status(200).json(response);
 }

@@ -1,15 +1,13 @@
-.product-container {
-}
-
 .bread-crumbs {
   display: flex;
-  gap: 0.5rem;
-  font-size: 16px;
+  font-size: 12px;
+  gap: 0.3rem;
 }
+
 .product-banner {
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 6rem;
 }
 
 .breadNav {
@@ -31,12 +29,30 @@
   margin: 0 0.7rem;
   border: 1px solid rgb(212, 212, 212);
   border-radius: 6px;
+  cursor: pointer;
+}
+
+.filterList li:active {
+  background-color: rgb(172, 172, 172);
 }
 
 .filterDropDown {
   padding: 10px;
-  background-color: white;
+  background-color: inherit;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 6px;
   max-height: 50px;
+}
+
+.productContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  justify-content: space-around;
+}
+
+.imgContainer {
+  position: relative;
+  width: 350px;
+  height: 400px;
 }

@@ -53,6 +53,7 @@ function BreadCrumb() {
           return (
             <li key={breadCrumb.href}>
               <Link href={breadCrumb.href}>
+                {"> "}
                 {convertBreadcrumb(breadCrumb.breadCrumb)}
               </Link>
             </li>

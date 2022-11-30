@@ -12,6 +12,8 @@ body {
 
 header {
   height: 80px;
+  background-color: white;
+  z-index: 10;
 }
 
 .primary-nav {
@@ -61,6 +63,12 @@ a {
   background-color: rgb(238, 238, 238);
   padding: 5px;
   border-radius: 5px;
+}
+
+.bannerContainer {
+  position: relative;
+  width: 100vw;
+  height: 300px;
 }
 
 @media (prefers-color-scheme: dark) {

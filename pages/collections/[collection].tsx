@@ -5,19 +5,23 @@ import BreadCrumb from "../../components/BreadCrumb";
 import FilterNavigationBar from "../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
 import ProductsGrid from "../../components/ProductsGrid";
+import BannerImage from "../../components/BannerImage";
 
-// after everything go over and see what can be component vs on page
+// Page renders indiviual collections of popular anime shows.
+// Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
 
 type staticProps = {
   data: Array<object>;
 };
 
+interface paramsObj {
+  params: { collection: string };
+}
+
 export default function CollectionPage(products: staticProps) {
-  // this page will act as default template for items, but items will be dynamically pulled by render
-
   const propsData = products.data;
-
   const router = useRouter();
+  let urlQuery = router.query.collection;
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -27,25 +31,19 @@ export default function CollectionPage(products: staticProps) {
     <section className={styles["product-container"]}>
       <BreadCrumb />
       <div className={styles["product-banner"]}>
-        <Image
-          src={"/onePieceBanner.png"}
-          alt="One Piece Banner"
-          width="1000"
-          height="300"
-        />
+        {/* dynamic banner */}
+        <BannerImage urlQuery={urlQuery} />
       </div>
 
+      {/* Filter bar for looks right now. Implentation coming */}
       <FilterNavigationBar />
-
+      {/* Product Grid Component displays all producs associated with collection */}
       <ProductsGrid productData={propsData} />
     </section>
   );
 }
 
-interface paramsObj {
-  params: { collection: string };
-}
-
+//  STATIC GENERATION SECTION //
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
   let res = await fetch(
