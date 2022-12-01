@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
+import MainBanner from "../components/MainBanner";
+import { FPModule } from "../components/FPModule";
 
 export default function Home() {
   return (
@@ -37,7 +39,29 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Link href="/api/collectionsData/index">api test</Link>
+        {/* <Link href="/api/collections/one-piece">api test</Link> */}
+        <MainBanner />
+
+        <section className={styles.modulesContainer}>
+          {/* FP - FRONT PAGE MODULE*/}
+          <FPModule
+            heading="Upcoming releases"
+            src="/upcomingR.jpg"
+            url="/upcoming-releases"
+          />
+          <FPModule
+            heading="Upcoming releases"
+            src="/cherryBlossoms.jpg"
+            url="/upcoming-releases"
+          />
+        </section>
+        {/* <Image
+          src="/zero-two-welcome.png"
+          alt="zero two from Darling in the franxx"
+          className={styles.zero_two}
+          width={200}
+          height={400}
+        /> */}
       </main>
 
       <footer className={styles.footer}>
