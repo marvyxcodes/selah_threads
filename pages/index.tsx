@@ -50,9 +50,9 @@ export default function Home() {
             url="/upcoming-releases"
           />
           <FPModule
-            heading="Upcoming releases"
+            heading="Clothing"
             src="/cherryBlossoms.jpg"
-            url="/upcoming-releases"
+            url="/clothing"
           />
         </section>
         {/* <Image

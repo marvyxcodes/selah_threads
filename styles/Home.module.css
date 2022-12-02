@@ -101,9 +101,14 @@
   bottom: 0;
   padding: 2rem 0;
   z-index: 4;
-  background-color: rgba(224, 224, 224, 0.801);
+  background-color: rgba(99, 99, 99, 0.801);
 }
 
+.moduleHeading h1 {
+  font-family:Georgia, 'Times New Roman', Times, serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;

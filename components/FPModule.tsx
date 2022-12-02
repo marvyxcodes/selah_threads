@@ -12,7 +12,7 @@ type moduleProps = {
 export const FPModule = (props: moduleProps) => {
   const { heading, src, url } = props;
   return (
-    <Link href="/upcoming-releases">
+    <Link href={url}>
       <div className={styles.homeModule}>
         <Image src={src} alt="new releases thumbnail" fill objectFit="cover" />
         <div className={styles.moduleHeading}>
