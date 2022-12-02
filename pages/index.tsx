@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Link from "next/link";
 import MainBanner from "../components/MainBanner";
 import { FPModule } from "../components/FPModule";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -40,18 +41,23 @@ export default function Home() {
 
       <main className={styles.main}>
         {/* <Link href="/api/collections/one-piece">api test</Link> */}
-        <MainBanner />
+        <MainBanner src='/banner.jpg'/>
 
         <section className={styles.modulesContainer}>
           {/* FP - FRONT PAGE MODULE*/}
           <FPModule
-            heading="Upcoming releases"
+            heading="Upcoming"
             src="/upcomingR.jpg"
             url="/upcoming-releases"
           />
           <FPModule
             heading="Clothing"
             src="/cherryBlossoms.jpg"
+            url="/clothing"
+          />
+          <FPModule
+            heading="Limited"
+            src="/orochiStat.jpg"
             url="/clothing"
           />
         </section>
@@ -64,12 +70,7 @@ export default function Home() {
         /> */}
       </main>
 
-      <footer className={styles.footer}>
-        Copyright @ WeebMania Inc. Powered by{" "}
-        <span className={styles.logo}>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </span>
-      </footer>
+      <Footer/>
     </div>
   );
 }

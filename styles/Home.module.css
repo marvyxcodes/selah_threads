@@ -83,14 +83,14 @@
 
 .modulesContainer {
   display: flex;
+  width: 100%;
   gap: 1.5rem;
+  justify-content: space-evenly;
 }
 
 .homeModule {
-  border: solid 1px grey;
-  border-radius: 5px;
   min-width: 290px;
-  min-height: 350px;
+  min-height: 400px;
   position: relative;
 }
 
@@ -108,6 +108,14 @@
   font-family:Georgia, 'Times New Roman', Times, serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.2rem;
   color: white;
+}
+
+.bannerLogo  {
+  position:absolute;
+  z-index: 10;
+  background-color: rgba(238, 238, 238, 0.808);
+  width: 100%;
+  height: 50%;
 }
 @media (max-width: 600px) {
   .grid {
