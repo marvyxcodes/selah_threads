@@ -4,12 +4,12 @@ import uniqid from "uniqid";
 import styles from "../styles/ProductPage.module.css";
 
 type productObj = {
-  category: String;
-  pathName: String;
-  animeName: String;
-  title: String;
-  desc: String;
-  url: String;
+  category: string;
+  pathName: string;
+  animeName: string;
+  title: string;
+  desc: string;
+  url: string;
   price: Number;
 };
 
@@ -18,7 +18,7 @@ function ProductsGrid(props) {
 
   console.log("props pG: ", props);
 
-  let gridEl = productData.map((product: object) => {
+  let gridEl = productData.map((product: productObj) => {
     // proudct key is going to be equal to SKU id. I think.
     // console.log(product.url);
 
@@ -33,7 +33,7 @@ function ProductsGrid(props) {
           />
         </div>
         <p>{product.title}</p>
-        <p>${product.price}</p>
+        <p>{`$ ${product.price}`}</p>
       </div>
     );
   });

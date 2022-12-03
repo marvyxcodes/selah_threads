@@ -41,7 +41,7 @@ export default function Home() {
 
       <main className={styles.main}>
         {/* <Link href="/api/collections/one-piece">api test</Link> */}
-        <MainBanner src='/banner.jpg'/>
+        <MainBanner src="/banner.jpg" />
 
         <section className={styles.modulesContainer}>
           {/* FP - FRONT PAGE MODULE*/}
@@ -55,11 +55,7 @@ export default function Home() {
             src="/cherryBlossoms.jpg"
             url="/clothing"
           />
-          <FPModule
-            heading="Limited"
-            src="/orochiStat.jpg"
-            url="/clothing"
-          />
+          <FPModule heading="Limited" src="/orochiStat.jpg" url="/clothing" />
         </section>
         {/* <Image
           src="/zero-two-welcome.png"
@@ -70,7 +66,7 @@ export default function Home() {
         /> */}
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

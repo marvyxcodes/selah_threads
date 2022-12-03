@@ -51,7 +51,6 @@ function productCreate(
   price,
   cb
 ) {
-  // if (discounts === false || discounts === null) discounts = 0;
   productDetail = {
     category: category,
     pathName: pathName,
