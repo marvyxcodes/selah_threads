@@ -19,6 +19,10 @@ module.exports = {
       },
       {
         protocol: "https",
+        hostname: "image.uniqlo.com",
+      },
+      {
+        protocol: "https",
         hostname: "m.media-amazon.com",
       },
       {

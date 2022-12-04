@@ -653,6 +653,134 @@ function createProducts(cb) {
           callback
         );
       },
+
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "my-hero-academia",
+          "My Hero Academia",
+          "League of Villains Long Sleeve Tee",
+          "",
+          "https://cdn.media.amplience.net/s/hottopic/19389351_hi?$productMainDesktop$",
+          25,
+          callback
+        );
+      },
+
+      // cyberpunk
+
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "cyberpunk-edgerunners",
+          "Cyber Punk Edgerunners",
+          "Lucy Cyberpunk Tee",
+          "",
+          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/LSM5GAXCPR_1_1600x.png?v=1666638980",
+          25,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "cyberpunk-edgerunners",
+          "Cyber Punk Edgerunners",
+          "Rebecca Cyberpunk Tee",
+          "",
+          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/TSM5GADCPR_1_1600x.png?v=1666624577",
+          25,
+          callback
+        );
+      },
+
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "cyberpunk-edgerunners",
+          "Cyber Punk Edgerunners",
+          "David Lucy Tee",
+          "",
+          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/LSM592FCPR_1_1600x.png?v=1663274317",
+          25,
+          callback
+        );
+      },
+
+      // LIMITED EDITIONS
+
+      function (callback) {
+        productCreate(
+          "limited",
+          "dragon-ball",
+          "Dragon Ball Z",
+          "Enron Bucket Hat",
+          "",
+          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/Lhttps://cdn.shopify.com/s/files/1/0070/1700/5113/products/OBA29RYDBH_1_1600x.png?v=1656437523",
+          25,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "limited",
+          "dragon-ball",
+          "Dragon Ball Z",
+          "Piccolo Sling Bag",
+          "",
+          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/FPA29RWDBH_1_1600x.png?v=1664464410",
+          25,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "limited",
+          "one-piece",
+          "One Piece",
+          "Straw Hat Tote Bag",
+          "",
+          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/LTA2E4RONP_1_1600x.png?v=1664909545",
+          25,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "limited",
+          "naruto",
+          "Naruto",
+          "Kaguya Deck",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2022/09/IMG_5646.jpg",
+          25,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "limited",
+          "misc",
+          "Misc",
+          "Sakura Bag",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2021/09/DSC00271-scaled.jpg",
+          25,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "limited",
+          "naruto",
+          "Naruto",
+          "Itachi Rug",
+          "",
+          "https://nikifilini.com/wp-content/uploads/2021/09/RUG-SUPREME-02.jpg",
+          25,
+          callback
+        );
+      },
     ],
 
     function cb(err, results) {

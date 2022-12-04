@@ -1,0 +1,4 @@
+12/3/22 - 
+    How do I dynamically pull individual collection/models via request query?
+    Should I just keep all products under same collection (that includes, new, upcoming, and art) meaning I would have to edit the master schema to hold even more infomration. it would eliminate repetitive schema on other objects. 
+    Downside is, its all on one schema, creates clunkiness in all that info.

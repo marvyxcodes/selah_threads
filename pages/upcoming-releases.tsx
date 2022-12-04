@@ -6,6 +6,9 @@ import FilterNavigationBar from "../components/FilterNavigationBar";
 import ProductsGrid from "../components/ProductsGrid";
 
 const upcomingReleases = (props) => {
+  const propsData = props.data;
+
+  console.log("propsdata: ", propsData);
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
@@ -13,11 +16,10 @@ const upcomingReleases = (props) => {
         {/* dynamic banner */}
         <BannerImage urlQuery={"urlQuery"} />
       </div>
-
       {/* Filter bar for looks right now. Implentation coming */}
       <FilterNavigationBar />
       {/* Product Grid Component displays all producs associated with collection */}
-      <ProductsGrid productData={"propsData"} />
+      <ProductsGrid productData={propsData} />
     </section>
   );
 };
@@ -25,10 +27,8 @@ const upcomingReleases = (props) => {
 export default upcomingReleases;
 
 export async function getStaticProps() {
-  let res = await fetch("http://localhost:3000/upcoming-releases");
+  let res = await fetch("http://localhost:3000/api/upcoming-releases");
   let data = await res.json();
-
-  console.log(data);
 
   return {
     props: {

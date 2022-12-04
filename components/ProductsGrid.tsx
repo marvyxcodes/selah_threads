@@ -16,7 +16,7 @@ type productObj = {
 function ProductsGrid(props) {
   const { productData } = props;
 
-  console.log("props pG: ", props);
+  // console.log("ProductGrid props: ", props);
 
   let gridEl = productData.map((product: productObj) => {
     // proudct key is going to be equal to SKU id. I think.

@@ -14,42 +14,44 @@ type staticProps = {
   data: Array<object>;
 };
 
-interface paramsObj {
-  params: { collection: string };
-}
-
-export default function CollectionPage(products: staticProps) {
+export default function Category(products: staticProps) {
   const propsData = products.data;
   const router = useRouter();
-  let urlQuery = router.query.collection;
+  let urlQuery = router.query.category;
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  // console.log("collection: ", products);
+  // console.log("router :", router);
 
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
       <div className={styles["product-banner"]}>
         {/* dynamic banner */}
-        <BannerImage urlQuery={urlQuery} />
+        {/* <BannerImage urlQuery={urlQuery} /> */}
       </div>
 
       {/* Filter bar for looks right now. Implentation coming */}
-      <FilterNavigationBar />
+      {/* <FilterNavigationBar /> */}
       {/* Product Grid Component displays all producs associated with collection */}
-      <ProductsGrid productData={propsData} />
+      {/* <ProductsGrid productData={propsData} /> */}
     </section>
   );
+}
+
+interface paramsObj {
+  params: { category: string };
 }
 
 //  STATIC GENERATION SECTION //
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
+
+  console.log(params);
   let res = await fetch(
-    `http://localhost:3000/api/collections/${params.collection}`
+    `http://localhost:3000/api/category/${params.category}`
   );
 
   // console.log("response: ", res);
@@ -65,7 +67,7 @@ export async function getStaticProps(context: paramsObj) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { collection: "one-piece" } }],
+    paths: [{ params: { category: "upcoming-releases" } }],
     fallback: true,
   };
 }

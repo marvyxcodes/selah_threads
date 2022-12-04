@@ -19,6 +19,7 @@ if (!userArgs[0].startsWith("mongodb")) {
 // TESTING AREA ///////////
 
 const upcomingProduct = new mongoose.Schema({
+  category: { type: String, required: true },
   pathName: { type: String, required: true },
   animeName: { type: String, required: true },
   title: { type: String, required: true },
@@ -27,7 +28,7 @@ const upcomingProduct = new mongoose.Schema({
   price: { type: Number, required: true },
 });
 
-const Product = mongoose.model("upcomingProduct", upcomingProduct);
+const Product = mongoose.model("upcomingReleases", upcomingProduct);
 
 ////////////////////////
 
@@ -40,8 +41,18 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 let products = [];
 
 // FUNCTION FACTORY - CREATION //
-function productCreate(pathName, animeName, title, desc, url, price, cb) {
+function productCreate(
+  category,
+  pathName,
+  animeName,
+  title,
+  desc,
+  url,
+  price,
+  cb
+) {
   productDetail = {
+    category: category,
     pathName: pathName,
     animeName: animeName,
     title: title,
@@ -72,8 +83,23 @@ function createProducts(cb) {
     [
       // Upcoming Merch //
       /////////////////////
+
       function (callback) {
         productCreate(
+          "Shirts",
+          "one-piece",
+          "One Piece",
+          "UT Straw Hats Tee",
+          "",
+          "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/459206/item/usgoods_00_459206.jpg?width=750",
+          25.0,
+          callback
+        );
+      },
+
+      function (callback) {
+        productCreate(
+          "Shirts",
           "naruto",
           "Naruto",
           "UT Naruto Short Sleeve Tee",
@@ -83,6 +109,148 @@ function createProducts(cb) {
           callback
         );
       },
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "one-piece",
+          "One Piece",
+          "UT Monkey D. Luffy Tee",
+          "",
+          "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/459209/item/usgoods_00_459209.jpg?width=750",
+          25.0,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "naruto",
+          "Naruto",
+          "UT Akatsuki Tee",
+          "",
+          "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/459205/item/usgoods_09_459205.jpg?width=750",
+          25.0,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "one-piece",
+          "One Piece",
+          "UT Doctor Chopper Tee",
+          "",
+          "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/458715/item/usgoods_03_458715.jpg?width=750",
+          25.0,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "naruto",
+          "Naruto",
+          "UT Naruto / Sasuke Tee",
+          "",
+          "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/459204/item/usgoods_00_459204.jpg?width=750",
+          25.0,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "one-piece",
+          "One Piece",
+          "UT Luffy Wrap Tee",
+          "",
+          "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/459208/item/usgoods_00_459208.jpg?width=750",
+          25.0,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Collectibles",
+          "demon-slayer",
+          "Demon Slayer",
+          "Kimetsu no Yaiba Tengen Daki",
+          "",
+          "https://m.media-amazon.com/images/I/51ukem7sJkL._AC_SX679_.jpg",
+          60,
+          callback
+        );
+      },
+
+      /////
+      function (callback) {
+        productCreate(
+          "Shirts",
+          "one-punch-man",
+          "One Punch Man",
+          "Saitama Ok Tee",
+          "",
+          "https://m.media-amazon.com/images/I/715t63Sd+RL._AC_UX679_.jpg",
+          25.0,
+          callback
+        );
+      },
+      function (callback) {
+        productCreate(
+          "Hoodies",
+          "jujutsu-kaisen",
+          "Jujutsu Kaisen",
+          "Satoru Gojo Hoodie",
+          "",
+          "https://m.media-amazon.com/images/I/61DgcH+p2QL._AC_UX679_.jpg",
+          25.0,
+          callback
+        );
+      },
+      // function (callback) {
+      //   productCreate(
+      //     "demon-slayer",
+      //     "Demon Slayer",
+      //     "Kimetsu no Yaiba Nezuko Perching Figure",
+      //     "",
+      //     "https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif",
+      //     25.0,
+      //     callback
+      //   );
+      // },
+      // function (callback) {
+      //   productCreate(
+      //     "demon-slayer",
+      //     "Demon Slayer",
+      //     "Kimetsu no Yaiba Nezuko Perching Figure",
+      //     "",
+      //     "https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif",
+      //     25.0,
+      //     callback
+      //   );
+      // },
+      // function (callback) {
+      //   productCreate(
+      //     "demon-slayer",
+      //     "Demon Slayer",
+      //     "Kimetsu no Yaiba Nezuko Perching Figure",
+      //     "",
+      //     "https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif",
+      //     25.0,
+      //     callback
+      //   );
+      // },
+      // function (callback) {
+      //   productCreate(
+      //     "demon-slayer",
+      //     "Demon Slayer",
+      //     "Kimetsu no Yaiba Nezuko Perching Figure",
+      //     "",
+      //     "https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif",
+      //     25.0,
+      //     callback
+      //   );
+      // },
     ],
 
     function cb(err, results) {

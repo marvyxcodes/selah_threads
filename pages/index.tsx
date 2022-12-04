@@ -48,14 +48,18 @@ export default function Home() {
           <FPModule
             heading="Upcoming"
             src="/upcomingR.jpg"
-            url="/upcoming-releases"
+            url="/product-category/upcoming-releases"
           />
           <FPModule
-            heading="Clothing"
-            src="/cherryBlossoms.jpg"
-            url="/clothing"
+            heading="Art"
+            src="/hinata.jpg"
+            url="/product-category/art"
           />
-          <FPModule heading="Limited" src="/orochiStat.jpg" url="/clothing" />
+          <FPModule
+            heading="Limited"
+            src="/orochiStat.jpg"
+            url="/product-category/limited"
+          />
         </section>
         {/* <Image
           src="/zero-two-welcome.png"

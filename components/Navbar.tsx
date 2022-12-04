@@ -30,10 +30,10 @@ function Navbar() {
           </Link>
           <ul className={`nav-list ${styles.navLinks}`}>
             <li>
-              <a>NEW</a>
+              <Link href="/new">NEW</Link>
             </li>
             <li>
-              <a>LIMITED EDITION</a>
+              <Link href="/limited">LIMITED EDITION</Link>
             </li>
             <li onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
               <Link id="collections" href="/collections">
@@ -45,7 +45,7 @@ function Navbar() {
                 showSubMenu={showSubMenu}
               />
             </li>
-            <li onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <li>
               <Link id="clothing" href="/clothing">
                 CLOTHING
               </Link>
