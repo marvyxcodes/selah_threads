@@ -17,7 +17,7 @@ export default async function handler(
   // console.log("request obj: ", req);
   main().catch((error) => console.error(error));
 
-  const response = await Product.find({}).exec();
+  const response = await Product.find({ category: categoryId }).exec();
 
   return res.status(200).json(response);
 }

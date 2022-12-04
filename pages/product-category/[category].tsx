@@ -36,7 +36,7 @@ export default function Category(products: staticProps) {
       {/* Filter bar for looks right now. Implentation coming */}
       {/* <FilterNavigationBar /> */}
       {/* Product Grid Component displays all producs associated with collection */}
-      {/* <ProductsGrid productData={propsData} /> */}
+      <ProductsGrid productData={propsData} />
     </section>
   );
 }

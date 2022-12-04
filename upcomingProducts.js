@@ -8,6 +8,7 @@ let mongoDB = userArgs[0];
 let uniqid = require("uniqid");
 const mongoose = require("mongoose");
 const { title } = require("process");
+const { type } = require("os");
 
 if (!userArgs[0].startsWith("mongodb")) {
   console.log(
@@ -20,12 +21,21 @@ if (!userArgs[0].startsWith("mongodb")) {
 
 const productSchema = new mongoose.Schema({
   category: { type: String, required: true },
+  type: { type: String, required: true },
   pathName: { type: String, required: true },
   animeName: { type: String, required: true },
   title: { type: String, required: true },
   desc: { type: String },
-  url: { type: String },
+  imgUrl: { type: String },
   price: { type: Number, required: true },
+  size: {
+    type: Object,
+    default: {
+      small: "small",
+      medium: "medium",
+      large: "large",
+    },
+  },
 });
 
 const Product = mongoose.model("productModel", productSchema);
@@ -43,21 +53,23 @@ let products = [];
 // FUNCTION FACTORY - CREATION //
 function productCreate(
   category,
+  type,
   pathName,
   animeName,
   title,
   desc,
-  url,
+  imgUrl,
   price,
   cb
 ) {
   productDetail = {
     category: category,
+    type: type,
     pathName: pathName,
     animeName: animeName,
     title: title,
     desc: desc,
-    url: url,
+    imgUrl: imgUrl,
     price: price,
   };
 
@@ -86,6 +98,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "one-piece",
           "One Piece",
@@ -99,6 +112,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "naruto",
           "Naruto",
@@ -111,6 +125,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "one-piece",
           "One Piece",
@@ -123,6 +138,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "naruto",
           "Naruto",
@@ -135,6 +151,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "one-piece",
           "One Piece",
@@ -147,6 +164,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "naruto",
           "Naruto",
@@ -159,6 +177,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "one-piece",
           "One Piece",
@@ -171,6 +190,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Collectibles",
           "demon-slayer",
           "Demon Slayer",
@@ -185,6 +205,7 @@ function createProducts(cb) {
       /////
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Shirts",
           "one-punch-man",
           "One Punch Man",
@@ -197,6 +218,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "upcoming-releases",
           "Hoodies",
           "jujutsu-kaisen",
           "Jujutsu Kaisen",
