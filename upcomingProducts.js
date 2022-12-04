@@ -18,7 +18,7 @@ if (!userArgs[0].startsWith("mongodb")) {
 
 // TESTING AREA ///////////
 
-const upcomingProduct = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   category: { type: String, required: true },
   pathName: { type: String, required: true },
   animeName: { type: String, required: true },
@@ -28,7 +28,7 @@ const upcomingProduct = new mongoose.Schema({
   price: { type: Number, required: true },
 });
 
-const Product = mongoose.model("upcomingReleases", upcomingProduct);
+const Product = mongoose.model("productModel", productSchema);
 
 ////////////////////////
 

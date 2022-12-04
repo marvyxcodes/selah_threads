@@ -20,12 +20,21 @@ if (!userArgs[0].startsWith("mongodb")) {
 
 const productSchema = new mongoose.Schema({
   category: { type: String, required: true },
+  type: { type: String, required: true },
   pathName: { type: String, required: true },
   animeName: { type: String, required: true },
   title: { type: String, required: true },
   desc: { type: String },
-  url: { type: String },
+  imgUrl: { type: String },
   price: { type: Number, required: true },
+  size: {
+    type: Object,
+    default: {
+      small: "small",
+      medium: "medium",
+      large: "large",
+    },
+  },
 });
 
 const Product = mongoose.model("productModel", productSchema);
@@ -43,21 +52,23 @@ let products = [];
 // FUNCTION FACTORY - CREATION //
 function productCreate(
   category,
+  type,
   pathName,
   animeName,
   title,
   desc,
-  url,
+  imgUrl,
   price,
   cb
 ) {
   productDetail = {
     category: category,
+    type: type,
     pathName: pathName,
     animeName: animeName,
     title: title,
     desc: desc,
-    url: url,
+    imgUrl: imgUrl,
     price: price,
   };
 
@@ -85,6 +96,7 @@ function createProducts(cb) {
       /////////////////////
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "one-piece",
           "One Piece",
@@ -98,6 +110,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "one-piece",
           "One Piece",
@@ -110,6 +123,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Sweatshirts",
           "one-piece",
           "One Piece",
@@ -122,6 +136,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "one-piece",
           "One Piece",
@@ -134,6 +149,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Pants",
           "one-piece",
           "One Piece",
@@ -146,6 +162,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "one-piece",
           "One Piece",
@@ -158,6 +175,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "one-piece",
           "One Piece",
@@ -170,6 +188,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "one-piece",
           "One Piece",
@@ -182,6 +201,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Beanies",
           "one-piece",
           "One Piece",
@@ -197,6 +217,7 @@ function createProducts(cb) {
       ////////////////////////
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "naruto",
           "Naruto",
@@ -209,6 +230,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "naruto",
           "Naruto",
@@ -221,6 +243,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Sweatshirts",
           "naruto",
           "Naruto",
@@ -233,6 +256,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Pants",
           "naruto",
           "Naruto",
@@ -245,6 +269,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "naruto",
           "Naruto",
@@ -257,6 +282,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "naruto",
           "Naruto",
@@ -269,6 +295,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Beanies",
           "naruto",
           "Naruto",
@@ -281,6 +308,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "naruto",
           "Naruto",
@@ -293,6 +321,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Sweatshirts",
           "naruto",
           "Naruto",
@@ -308,6 +337,7 @@ function createProducts(cb) {
       ///////////////////////
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "demon-slayer",
           "Demon Slayer",
@@ -320,6 +350,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Beanies",
           "demon-slayer",
           "Demon Slayer",
@@ -332,6 +363,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "demon-slayer",
           "Demon Slayer",
@@ -344,6 +376,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "demon-slayer",
           "Demon Slayer",
@@ -356,6 +389,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "demon-slayer",
           "Demon Slayer",
@@ -368,6 +402,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "demon-slayer",
           "Demon Slayer",
@@ -380,6 +415,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Pants",
           "demon-slayer",
           "Demon Slayer",
@@ -392,6 +428,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "demon-slayer",
           "Demon Slayer",
@@ -404,6 +441,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Pants",
           "demon-slayer",
           "Demon Slayer",
@@ -420,6 +458,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Sweatshirts",
           "attack-on-titan",
           "Attack on Titan",
@@ -432,6 +471,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "attack-on-titan",
           "Attack on Titan",
@@ -444,6 +484,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Beanies",
           "attack-on-titan",
           "Attack on Titan",
@@ -456,6 +497,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "attack-on-titan",
           "Attack on Titan",
@@ -468,6 +510,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "attack-on-titan",
           "Attack on Titan",
@@ -480,6 +523,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "attack-on-titan",
           "Attack on Titan",
@@ -492,6 +536,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "attack-on-titan",
           "Attack on Titan",
@@ -504,6 +549,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "attack-on-titan",
           "Attack on Titan",
@@ -516,6 +562,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Pants",
           "attack-on-titan",
           "Attack on Titan",
@@ -529,6 +576,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "attack-on-titan",
           "Attack on Titan",
@@ -545,6 +593,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "my-hero-academia",
           "My Hero Academia",
@@ -557,6 +606,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "my-hero-academia",
           "My Hero Academia",
@@ -569,6 +619,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Pants",
           "my-hero-academia",
           "My Hero Academia",
@@ -582,6 +633,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "my-hero-academia",
           "My Hero Academia",
@@ -594,6 +646,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "my-hero-academia",
           "My Hero Academia",
@@ -606,6 +659,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "my-hero-academia",
           "My Hero Academia",
@@ -618,6 +672,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "my-hero-academia",
           "My Hero Academia",
@@ -631,6 +686,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Hoodies",
           "my-hero-academia",
           "My Hero Academia",
@@ -643,6 +699,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "my-hero-academia",
           "My Hero Academia",
@@ -656,6 +713,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "my-hero-academia",
           "My Hero Academia",
@@ -671,6 +729,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "cyberpunk-edgerunners",
           "Cyber Punk Edgerunners",
@@ -683,6 +742,7 @@ function createProducts(cb) {
       },
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "cyberpunk-edgerunners",
           "Cyber Punk Edgerunners",
@@ -696,6 +756,7 @@ function createProducts(cb) {
 
       function (callback) {
         productCreate(
+          "collections",
           "Shirts",
           "cyberpunk-edgerunners",
           "Cyber Punk Edgerunners",
@@ -712,6 +773,7 @@ function createProducts(cb) {
       function (callback) {
         productCreate(
           "limited",
+          "misc",
           "dragon-ball",
           "Dragon Ball Z",
           "Enron Bucket Hat",
@@ -724,6 +786,7 @@ function createProducts(cb) {
       function (callback) {
         productCreate(
           "limited",
+          "misc",
           "dragon-ball",
           "Dragon Ball Z",
           "Piccolo Sling Bag",
@@ -736,6 +799,7 @@ function createProducts(cb) {
       function (callback) {
         productCreate(
           "limited",
+          "misc",
           "one-piece",
           "One Piece",
           "Straw Hat Tote Bag",
@@ -748,6 +812,7 @@ function createProducts(cb) {
       function (callback) {
         productCreate(
           "limited",
+          "misc",
           "naruto",
           "Naruto",
           "Kaguya Deck",
@@ -761,6 +826,7 @@ function createProducts(cb) {
         productCreate(
           "limited",
           "misc",
+          "misc",
           "Misc",
           "Sakura Bag",
           "",
@@ -772,6 +838,7 @@ function createProducts(cb) {
       function (callback) {
         productCreate(
           "limited",
+          "misc",
           "naruto",
           "Naruto",
           "Itachi Rug",

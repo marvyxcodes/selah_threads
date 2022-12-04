@@ -8,6 +8,7 @@ const productSchema = new Schema({
   desc: { type: String },
   url: { type: String },
   price: { type: Number, required: true },
+  size: { type: Object },
 });
 
 const Product =

@@ -9,14 +9,12 @@ type productObj = {
   animeName: string;
   title: string;
   desc: string;
-  url: string;
+  imgUrl: string;
   price: Number;
 };
 
 function ProductsGrid(props) {
   const { productData } = props;
-
-  // console.log("ProductGrid props: ", props);
 
   let gridEl = productData.map((product: productObj) => {
     // proudct key is going to be equal to SKU id. I think.
@@ -29,7 +27,7 @@ function ProductsGrid(props) {
             fill
             objectFit="contain"
             alt="product image"
-            src={product.url}
+            src={product.imgUrl}
           />
         </div>
         <p>{product.title}</p>
