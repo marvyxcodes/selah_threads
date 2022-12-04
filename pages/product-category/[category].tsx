@@ -15,7 +15,7 @@ type staticProps = {
 };
 
 export default function Category(products: staticProps) {
-  const propsData = products.data;
+  const propsData = products.data as any;
   const router = useRouter();
   let urlQuery = router.query.category;
 

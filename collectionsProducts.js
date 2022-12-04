@@ -774,11 +774,11 @@ function createProducts(cb) {
         productCreate(
           "limited",
           "misc",
-          "dragon-ball",
-          "Dragon Ball Z",
-          "Enron Bucket Hat",
+          "naruto",
+          "Naruto",
+          "Akatsuki Bucket Hat",
           "",
-          "https://cdn.shopify.com/s/files/1/0070/1700/5113/products/Lhttps://cdn.shopify.com/s/files/1/0070/1700/5113/products/OBA29RYDBH_1_1600x.png?v=1656437523",
+          "https://cdn.shopify.com/s/files/1/0014/2648/9388/products/crunchyroll-naruto-shippuden-hidden-leaf-cloud-reversible-bucket-hat-30021436833836_480x480.jpg?v=1649107853",
           25,
           callback
         );

@@ -1,8 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-function BannerImage(props) {
+type bannerProp = {
+  urlQuery: string;
+};
+
+function BannerImage(props: bannerProp) {
   const { urlQuery } = props;
+
+  console.log("banner props: ", props);
 
   let banner = "";
   if (urlQuery.includes("one-piece")) banner = "/onePieceBanner.png";

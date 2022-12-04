@@ -19,22 +19,21 @@ interface paramsObj {
 }
 
 export default function CollectionPage(products: staticProps) {
-  const propsData = products.data;
+  const propsData = products.data as any;
   const router = useRouter();
-  let urlQuery = router.query.collection;
+
+  let colQuery = router.query.collection as string;
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  // console.log("collection: ", products);
 
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
       <div className={styles["product-banner"]}>
         {/* dynamic banner */}
-        <BannerImage urlQuery={urlQuery} />
+        <BannerImage urlQuery={colQuery} />
       </div>
 
       {/* Filter bar for looks right now. Implentation coming */}
@@ -51,8 +50,6 @@ export async function getStaticProps(context: paramsObj) {
   let res = await fetch(
     `http://localhost:3000/api/collections/${params.collection}`
   );
-
-  // console.log("response: ", res);
 
   let data = await res.json();
 

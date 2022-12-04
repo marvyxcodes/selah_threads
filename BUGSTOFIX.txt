@@ -1,3 +1,4 @@
-12/3/22 - Remove product category from breadcrumb trails. Not fixed;
+12/3/22 
 
-
+- Remove product category from breadcrumb trails. Not fixed;
+- nextJS images with legacy prop "objectFit";

@@ -14,7 +14,7 @@ export default async function handler(
   main().catch((error) => console.error(error));
 
   let collection = req.query.collectionId as string;
-  console.log("collection query: ", collection);
+  // console.log("collection query: ", collection);
 
   const response = await Product.find({ pathName: collection }).exec();
 

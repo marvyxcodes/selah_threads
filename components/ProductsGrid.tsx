@@ -3,22 +3,29 @@ import Image from "next/image";
 import uniqid from "uniqid";
 import styles from "../styles/ProductPage.module.css";
 
+type productDataProp = {
+  productData: Array<productObj>;
+};
+
 type productObj = {
   category: string;
+  type: string;
   pathName: string;
   animeName: string;
   title: string;
   desc: string;
   imgUrl: string;
   price: Number;
+  size: object;
 };
 
-function ProductsGrid(props) {
+function ProductsGrid(props: productDataProp) {
   const { productData } = props;
 
+  console.log("props PGrid: ", props);
+
   let gridEl = productData.map((product: productObj) => {
-    // proudct key is going to be equal to SKU id. I think.
-    // console.log(product.url);
+    // proudct key is going to be equal to SKU id in future
 
     return (
       <div key={uniqid()}>
