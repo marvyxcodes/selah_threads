@@ -6,8 +6,10 @@ import FilterNavigationBar from "../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
 import ProductsGrid from "../../components/ProductsGrid";
 import BannerImage from "../../components/BannerImage";
+import Product from "../../mongoDB/Models/product";
+import main from "../../mongoDB/connect";
 
-// Page renders indiviual collections of popular anime shows.
+// Page renders indiviual collections of popular animecollection shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
 
 type staticProps = {
@@ -18,22 +20,26 @@ interface paramsObj {
   params: { collection: string };
 }
 
-export default function CollectionPage(products: staticProps) {
-  const propsData = products.data as any;
-  const router = useRouter();
 
-  let colQuery = router.query.collection as string;
+
+
+export default function CollectionPage(products: staticProps) {
+  const propsData = products.data;
+  const router = useRouter();
+  let urlQuery = router.query.collection as string;
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
+  // console.log("collection: ", products);
 
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
       <div className={styles["product-banner"]}>
         {/* dynamic banner */}
-        <BannerImage urlQuery={colQuery} />
+        <BannerImage urlQuery={urlQuery} />
       </div>
 
       {/* Filter bar for looks right now. Implentation coming */}
@@ -44,14 +50,23 @@ export default function CollectionPage(products: staticProps) {
   );
 }
 
+
 //  STATIC GENERATION SECTION //
+
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
-  let res = await fetch(
-    `http://localhost:3000/api/collections/${params.collection}`
-  );
+  // let res = await fetch(
+  //   `http://localhost:3000/api/collections/${params.collection}`
+  // );
+  // let data = await res.json();
 
-  let data = await res.json();
+  main().catch((error) => console.error(error));
+
+  const response = await Product.find({ pathName: params.collection }).exec();
+
+     let data = JSON.parse(JSON.stringify(response));
+
+     console.log(data);
 
   return {
     props: {
@@ -64,5 +79,5 @@ export async function getStaticPaths() {
   return {
     paths: [{ params: { collection: "one-piece" } }],
     fallback: true,
-  };
+  }
 }

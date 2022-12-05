@@ -8,7 +8,7 @@ type bannerProp = {
 function BannerImage(props: bannerProp) {
   const { urlQuery } = props;
 
-  console.log("banner props: ", props);
+  // console.log("banner props: ", props);
 
   let banner = "";
   if (urlQuery.includes("one-piece")) banner = "/onePieceBanner.png";

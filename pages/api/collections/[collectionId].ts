@@ -18,5 +18,7 @@ export default async function handler(
 
   const response = await Product.find({ pathName: collection }).exec();
 
+  // console.log('sup: ', sup);
+
   return res.status(200).json(response);
 }
