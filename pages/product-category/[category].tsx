@@ -6,6 +6,8 @@ import FilterNavigationBar from "../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
 import ProductsGrid from "../../components/ProductsGrid";
 import BannerImage from "../../components/BannerImage";
+import main from "../../mongoDB/connect";
+import Product from "../../mongoDB/Models/product";
 
 // Page renders indiviual collections of popular anime shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
@@ -49,14 +51,14 @@ interface paramsObj {
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
 
-  console.log(params);
-  let res = await fetch(
-    `http://localhost:3000/api/category/${params.category}`
-  );
+  // let res = await fetch(
+  //   `http://localhost:3000/api/category/${params.category}`
+  // );
+  // let data = await res.json();
 
-  // console.log("response: ", res);
-
-  let data = await res.json();
+  main().catch((error) => console.error(error));
+  const response = await Product.find({ category: params.category }).exec();
+  let data = await JSON.parse(JSON.stringify(response));
 
   return {
     props: {
@@ -67,7 +69,11 @@ export async function getStaticProps(context: paramsObj) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { category: "upcoming-releases" } }],
+    paths: [
+      { params: { category: "upcoming-releases" } },
+      { params: { category: "art" } },
+      { params: { category: "limited" } },
+    ],
     fallback: true,
   };
 }

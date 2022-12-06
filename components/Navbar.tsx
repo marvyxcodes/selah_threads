@@ -33,7 +33,7 @@ function Navbar() {
               <Link href="/new">NEW</Link>
             </li>
             <li>
-              <Link href="/limited">LIMITED EDITION</Link>
+              <Link href="/product-category/limited">LIMITED EDITION</Link>
             </li>
             <li onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
               <Link id="collections" href="/collections">

@@ -12,27 +12,24 @@ import main from "../../mongoDB/connect";
 // Page renders indiviual collections of popular animecollection shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
 
-type staticProps = {
-  data: Array<object>;
-};
+// type staticProps = {
+//   data: Array<object>;
+// };
 
-interface paramsObj {
-  params: { collection: string };
+interface Props {
+  data: {}[];
 }
 
+export default function CollectionPage(products: Props) {
+  const propsData = products.data as any;
+  //propsData is array of objects
 
-
-
-export default function CollectionPage(products: staticProps) {
-  const propsData = products.data;
   const router = useRouter();
   let urlQuery = router.query.collection as string;
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  // console.log("collection: ", products);
 
   return (
     <section className={styles["product-container"]}>
@@ -50,9 +47,10 @@ export default function CollectionPage(products: staticProps) {
   );
 }
 
-
 //  STATIC GENERATION SECTION //
-
+interface paramsObj {
+  params: { collection: string };
+}
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
   // let res = await fetch(
@@ -61,12 +59,8 @@ export async function getStaticProps(context: paramsObj) {
   // let data = await res.json();
 
   main().catch((error) => console.error(error));
-
   const response = await Product.find({ pathName: params.collection }).exec();
-
-     let data = JSON.parse(JSON.stringify(response));
-
-     console.log(data);
+  let data = await JSON.parse(JSON.stringify(response));
 
   return {
     props: {
@@ -77,7 +71,13 @@ export async function getStaticProps(context: paramsObj) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { collection: "one-piece" } }],
+    paths: [
+      { params: { collection: "one-piece" } },
+      // { params: { collection: "naruto" } },
+      // { params: { collection: "demon-slayer" } },
+      // { params: { collection: "attack-on-titan" } },
+      // { params: { collection: "my-hero-academia" } },
+    ],
     fallback: true,
-  }
+  };
 }
