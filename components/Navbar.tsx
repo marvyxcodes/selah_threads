@@ -36,7 +36,7 @@ function Navbar() {
               <Link href="/product-category/limited">LIMITED EDITION</Link>
             </li>
             <li onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-              <Link id="collections" href="/product-category/collections">
+              <Link id="collections" href="/collections">
                 COLLECTIONS
               </Link>
               <NavSubMenu
@@ -46,7 +46,7 @@ function Navbar() {
               />
             </li>
             <li>
-              <Link id="/product-category/clothing" href="/clothing">
+              <Link id="clothing" href="/product-category/clothing">
                 CLOTHING
               </Link>
             </li>

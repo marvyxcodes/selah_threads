@@ -56,3 +56,13 @@
   width: 350px;
   height: 400px;
 }
+
+.productBox {
+  text-align: right;
+}
+
+.productBox:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: transform 0.1s;
+}
