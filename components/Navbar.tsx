@@ -56,7 +56,7 @@ function Navbar() {
         <div className="secondary-nav">
           <ul className={styles.navLinks}>
             <li>
-              <a>
+              <Link href="/my-account">
                 <Image
                   className="nav-icon"
                   src="/userIcon.svg"
@@ -64,7 +64,7 @@ function Navbar() {
                   width={35}
                   height={35}
                 />
-              </a>
+              </Link>
             </li>
             <li>
               <a>
