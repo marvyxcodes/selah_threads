@@ -1,6 +1,19 @@
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 
+
+// type credObj = {
+//   username: {
+//     label: string;
+//     type: string;
+//     placeholder: string;
+//   }
+//   password: {label: string; type: string;}
+// }
+
+
+// create sign-up page.
+
 export default NextAuth({
   providers: [
     Credentials({
@@ -16,9 +29,9 @@ export default NextAuth({
           type: "email",
           placeholder: "weeblove21",
         },
-        passsowrd: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: object, req: object) {
+      async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
         const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
 
