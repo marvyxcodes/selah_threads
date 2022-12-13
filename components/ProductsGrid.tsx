@@ -23,7 +23,7 @@ function ProductsGrid(props: Props) {
   const { productData } = props;
   const router = useRouter();
 
-  console.log("route q: ", router);
+  // console.log("route q: ", router);
 
   let currentPath = router.asPath;
 

@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/Navbar.tsx",
-    "mongoDB/connect.js"
+    "mongoDB/connect.js",
+    "pages/product-category/[category]/[productId}"
   ],
   "exclude": ["node_modules"]
 }

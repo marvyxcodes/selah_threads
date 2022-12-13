@@ -51,20 +51,20 @@ interface paramsObj {
 export async function getStaticProps(context: paramsObj) {
   const { params } = context;
 
-  // let res = await fetch(
-  //   `http://localhost:3000/api/category/${params.category}`
-  // );
-  // let data = await res.json();
-
   let urlQuery = { category: params.category } as any;
+  // this gets the selected parameter and assigns it. example:
+  // params: {category: 'art'} => product-category/art
 
-  // Run query that searches for everything but misc.
+  console.log(context);
+
+  // Run query that searches for specific mongoDB category as pulled from above.
   if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
 
   main().catch((error) => console.error(error));
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
 
+  //data returns full array of objects associated with category and is returned to page via props.
   return {
     props: {
       data,
@@ -72,17 +72,10 @@ export async function getStaticProps(context: paramsObj) {
   };
 }
 
+// since page is dynamic getStaticPaths must be defined for at least one path.
 export async function getStaticPaths() {
-  // return {
-  //   paths: [{ params: { category: ["limited"] } }],
-  //   fallback: true,
-  // };
   return {
-    paths: [
-      { params: { category: "upcoming-releases" } },
-      { params: { category: "art" } },
-      { params: { category: "limited" } },
-    ],
+    paths: [{ params: { category: "upcoming-releases" } }],
     fallback: true,
   };
 }
