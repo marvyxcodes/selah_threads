@@ -1,7 +1,6 @@
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 
-
 // type credObj = {
 //   username: {
 //     label: string;
@@ -11,10 +10,15 @@ import Credentials from "next-auth/providers/credentials";
 //   password: {label: string; type: string;}
 // }
 
-
 // create sign-up page.
 
 export default NextAuth({
+  // NEXTAUTH_URL= DOMAIN NAME ==== THIS IS FOR WHEN PUSHING TO PRODUCTION //
+  pages: {
+    signIn: "/auth/signin",
+    signOut: "auth/signout",
+    newUser: "auth/new-user",
+  },
   providers: [
     Credentials({
       // Name displayed on the sign in form

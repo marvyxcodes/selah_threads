@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "styles/ProductPage.module.css";
 import Image from "next/image";
-import BreadCrumb from "../../components/BreadCrumb";
-import FilterNavigationBar from "../../components/FilterNavigationBar";
+import BreadCrumb from "../../../components/BreadCrumb";
+import FilterNavigationBar from "../../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
-import ProductsGrid from "../../components/ProductsGrid";
-import BannerImage from "../../components/BannerImage";
-import Product from "../../mongoDB/Models/product";
-import main from "../../mongoDB/connect";
+import ProductsGrid from "../../../components/ProductsGrid";
+import BannerImage from "../../../components/BannerImage";
+import Product from "../../../mongoDB/Models/product";
+import main from "../../../mongoDB/connect";
 
 // Page renders indiviual collections of popular animecollection shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.

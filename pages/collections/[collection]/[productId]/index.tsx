@@ -3,9 +3,6 @@ import main from "../../../../mongoDB/connect";
 import Product from "../../../../mongoDB/Models/product";
 import ProductDetails from "../../../../components/ProductDetails";
 
-// this ProductPage and the one in collection need to be consolidated somehow
-// if possible. basically got a duplicate here.
-
 function ProductPage({ productInfo }: any) {
   // this returns undefined if fallback is set to true. If change is needed, make sure to include fallback loading so this doesn't run first.
   const product = productInfo[0];
@@ -42,7 +39,7 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { category: "upcoming-releases", productId: "" } }],
+    paths: [{ params: { collection: "one-piece", productId: "" } }],
     fallback: "blocking",
   };
 }

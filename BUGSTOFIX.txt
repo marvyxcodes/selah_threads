@@ -1,4 +1,21 @@
 12/3/22 
 
 - Remove product category from breadcrumb trails. Not fixed;
-- nextJS images with legacy prop "objectFit";
+
+
+12/12/22 
+    
+    - So i have duplicated productID page onto both collections and product-category,
+    need to consolidate this so there isn't double the work. Coming back after implementations of more dire things are in place
+
+    -Image size inconsistencies need fixing
+
+
+
+
+
+
+
+==== FIXED ====
+
+- nextJS images with legacy prop "objectFit"; 

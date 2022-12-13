@@ -35,7 +35,7 @@ function ProductsGrid(props: Props) {
           <div className={styles.imgContainer}>
             <Image
               fill
-              style={{ objectFit: "contain" }}
+              className="productImg"
               alt="product image"
               src={product.imgUrl}
             />
