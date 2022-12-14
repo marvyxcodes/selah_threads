@@ -12,7 +12,7 @@ import Credentials from "next-auth/providers/credentials";
 
 // create sign-up page.
 
-export default NextAuth({
+export const authOptions = {
   // NEXTAUTH_URL= DOMAIN NAME ==== THIS IS FOR WHEN PUSHING TO PRODUCTION //
   pages: {
     signIn: "/auth/signin",
@@ -39,6 +39,13 @@ export default NextAuth({
         // Add logic here to look up the user from the credentials supplied
         const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
 
+        // here we want to await our mongoose database validation from the MONGODB directory
+
+        // credentials is equal to whatever the form values were here. cross reference with Mongodb here using an external function/component
+
+        console.log("credentials: ", credentials);
+        console.log("req: ", req);
+
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
 
@@ -52,4 +59,6 @@ export default NextAuth({
       },
     }),
   ],
-});
+};
+
+export default NextAuth(authOptions);

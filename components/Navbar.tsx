@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import NavSubMenu from "./NavSubMenu";
 import Link from "next/link";
+import LoginBtn from "./Login-btn";
 
 function Navbar() {
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -56,15 +57,8 @@ function Navbar() {
         <div className="secondary-nav">
           <ul className={styles.navLinks}>
             <li>
-              <Link href="/my-account">
-                <Image
-                  className="nav-icon"
-                  src="/userIcon.svg"
-                  alt="User account"
-                  width={35}
-                  height={35}
-                />
-              </Link>
+              {/* this links to the loginpage api page */}
+              <LoginBtn />
             </li>
             <li>
               <a>
