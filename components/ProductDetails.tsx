@@ -2,14 +2,21 @@ import React from "react";
 import Image from "next/image";
 import styles from "../styles/Product.module.css";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import { useRouter } from "next/router";
 
 function ProductDetails({ product }) {
+  const router = useRouter();
   const {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart,
+    cartItems,
   } = useShoppingCart();
+
+  const itemId = router.query.productId as string;
+
+  console.log(cartItems);
 
   return (
     <div className={styles.productContainer}>
@@ -35,12 +42,26 @@ function ProductDetails({ product }) {
           <button>M</button>
           <button>L</button>
         </div>
-        <button
-          onClick={() => increaseCartQuantity()}
-          className={styles.addCart}
-        >
-          Add To Cart
-        </button>
+        {cartItems.length > 0 ? (
+          <div className={styles.cart_options}>
+            <button onClick={() => decreaseCartQuantity(itemId)}>-</button>
+            <div className={styles.quantityCount}>
+              {cartItems.map((item) => {
+                if (item.id === itemId) {
+                  return item.quantity;
+                }
+              })}
+            </div>
+            <button onClick={() => increaseCartQuantity(itemId)}>+</button>
+          </div>
+        ) : (
+          <button
+            onClick={() => increaseCartQuantity(itemId)}
+            className={styles.addCart}
+          >
+            Add To Cart
+          </button>
+        )}
       </div>
     </div>
   );

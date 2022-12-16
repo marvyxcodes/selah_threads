@@ -48,3 +48,22 @@
 .addCart:focus {
   opacity: 0.75;
 }
+
+.cart_options {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.cart_options button {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 0.3rem 1rem;
+}
+
+.quantityCount {
+  padding: 0.3rem 1rem;
+  margin: 0 0.2rem;
+  border: solid 1px rgb(219, 219, 219);
+  border-radius: 4px;
+}
