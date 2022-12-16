@@ -1,8 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../styles/Product.module.css";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 function ProductDetails({ product }) {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+
   return (
     <div className={styles.productContainer}>
       <div className={styles.imgContainer}>
@@ -27,6 +35,12 @@ function ProductDetails({ product }) {
           <button>M</button>
           <button>L</button>
         </div>
+        <button
+          onClick={() => increaseCartQuantity()}
+          className={styles.addCart}
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );

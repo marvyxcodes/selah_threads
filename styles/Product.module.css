@@ -25,5 +25,26 @@
   display: flex;
   text-align: center;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
+
+.addCart {
+  background-color: #222;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  max-width: 150px;
+  min-height: 44px;
+  min-width: 150px;
+  text-align: center;
+  touch-action: manipulation;
+  margin-top: 2rem;
+}
+
+.addCart:hover,
+.addCart:focus {
+  opacity: 0.75;
 }
