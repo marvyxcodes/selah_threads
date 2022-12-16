@@ -13,9 +13,16 @@
 
 
 
+========= Warnings ============
+
+- look out for CSRF TOKEN that causes sign in to happen twice sometimes, because of serverside props
+ reference "https://github.com/nextauthjs/next-auth/issues/2426#issuecomment-1141406105"
 
 
+==== PARTIALLY FIXED ====
 
-==== FIXED ====
+- nextJS images with legacy prop "objectFit"; NOT ALL ARE DONE;
+- 
 
-- nextJS images with legacy prop "objectFit"; 
+
+===== FIXED =============

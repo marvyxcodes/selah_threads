@@ -3,7 +3,6 @@ import Credentials from "next-auth/providers/credentials";
 import userSchema from "../../../mongoDB/Models/user";
 import * as dotenv from "dotenv";
 import userConn from "../../../mongoDB/usersConnect";
-import mongoose from "mongoose";
 
 const bcyrpt = require("bcrypt");
 
@@ -53,6 +52,7 @@ export const authOptions = {
 
         console.log("data: ", usersArray);
 
+        // check and compare that both username and password hash are valid from mongoDB search, return array where both are true;
         let mongoUser = usersArray.filter((user) => {
           return (
             user.username === formUsername &&
@@ -60,12 +60,8 @@ export const authOptions = {
           );
         });
 
-        // mongoose.connection.close();
-        // &&
-        //     bcyrpt.compare(formPassword, user.password, function (err, result) {
-        //       console.log(result);
+        // console.log("mongoUser: ", mongoUser);
 
-        console.log("mongoUser: ", mongoUser);
         if (mongoUser) {
           // Any object returned will be saved in `user` property of the JWT
           return mongoUser;
