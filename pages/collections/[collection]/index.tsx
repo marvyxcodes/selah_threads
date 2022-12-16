@@ -58,7 +58,7 @@ export async function getStaticProps(context: paramsObj) {
   // );
   // let data = await res.json();
 
-  main("products").catch((error) => console.error(error));
+  main().catch((error) => console.error(error));
   const response = await Product.find({ pathName: params.collection }).exec();
   let data = await JSON.parse(JSON.stringify(response));
 

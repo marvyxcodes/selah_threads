@@ -1,5 +1,8 @@
 import { useSession, signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 import Image from "next/image";
+
+//    <button onClick={() => signIn()}>
 
 export default function LoginBtn() {
   const { data: session } = useSession() as any;
@@ -12,7 +15,7 @@ export default function LoginBtn() {
   }
   return (
     <>
-      <button onClick={() => signIn()}>
+      <Link href="/auth/signin">
         <Image
           className="nav-icon"
           src="/userIcon.svg"
@@ -20,7 +23,7 @@ export default function LoginBtn() {
           width={35}
           height={35}
         />
-      </button>
+      </Link>
     </>
   );
 }

@@ -56,22 +56,18 @@ export async function getStaticProps(context: paramsObj) {
   // this gets the selected parameter and assigns it. example:
   // params: {category: 'art'} => product-category/art
 
-  console.log(context);
-
   // Run query that searches for specific mongoDB category as pulled from above.
   if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
 
-  main('products').catch((error) => console.error(error));
+  main().catch((error) => console.error(error));
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
-
   //data returns full array of objects associated with category and is returned to page via props.
   return {
     props: {
       data,
     },
   };
-
 }
 
 // since page is dynamic getStaticPaths must be defined for at least one path.

@@ -1,10 +1,13 @@
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
-import User from "../../../mongoDB/Models/user";
-import main from "../../../mongoDB/connect";
+import userSchema from "../../../mongoDB/Models/user";
+import * as dotenv from "dotenv";
+import userConn from "../../../mongoDB/usersConnect";
 import mongoose from "mongoose";
 
-const bcyrpt = require ('bcrypt');
+const bcyrpt = require("bcrypt");
+
+dotenv.config();
 
 export const authOptions = {
   // NEXTAUTH_URL= DOMAIN NAME ==== THIS IS FOR WHEN PUSHING TO PRODUCTION //
@@ -37,28 +40,34 @@ export const authOptions = {
         //   csrfToken:'c758d990d886f4ac309d09...',
         //   username: 'marv',
         //   password: '3333'
-        // }   
+        // }
+        // establish input credentials.
+        const formUsername = credentials?.username;
+        const formPassword = credentials?.password;
 
-        // Connect to MongoDB
-        main('users').catch((err) => console.error(err));
-
-        console.log('creds: ', credentials);
-       
-        let mongoUser = '';
-
-        console.log('username: ', credentials.username)
-
+        // Connect to Mongoose DB of users.
+        let User = userConn.model("user_model", userSchema);
         // under MONGOOSE docs it says to export schemas instead of MODELS due to connections being only one per model. etc LOOK AT DOCS TO FIX
-      
-         let response = await User.find({username: credentials?.username}).exec();
-          let data = await JSON.parse(JSON.stringify(response));
+        const response = await User.find({ username: formUsername }).exec();
+        let usersArray = await JSON.parse(JSON.stringify(response));
 
-          console.log('data: ', data);
-          
-        
+        console.log("data: ", usersArray);
+
+        let mongoUser = usersArray.filter((user) => {
+          return (
+            user.username === formUsername &&
+            bcyrpt.compare(formPassword, user.password)
+          );
+        });
+
+        // mongoose.connection.close();
+        // &&
+        //     bcyrpt.compare(formPassword, user.password, function (err, result) {
+        //       console.log(result);
+
+        console.log("mongoUser: ", mongoUser);
         if (mongoUser) {
           // Any object returned will be saved in `user` property of the JWT
-
           return mongoUser;
         } else {
           // If you return null then an error will be displayed advising the user to check their details.

@@ -7,7 +7,7 @@ import styles from "../../styles/Credentials.module.css";
 export default function Signup() {
   const router = useRouter();
 
-  console.log(router);
+  // console.log(router);
   const [password, setPassword] = React.useState();
 
   // i can do client-side validation of password confirmations?,
@@ -39,7 +39,7 @@ export default function Signup() {
 
       const response = await fetch(endpoint, options);
       const result = await response.json();
-      if (result === "Success") router.push("/api/auth/signin");
+      // if (result === "Success") router.push("/api/auth/signin");
     }
   }
 

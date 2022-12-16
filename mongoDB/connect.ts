@@ -5,14 +5,11 @@ dotenv.config();
 
 // create mongodb mongodb connection
 
-const main = async (database: string) => {
+// "createConnection doesn't load product for some reason."
 
-  
-  let productsDB = process.env.MONGO_PRODUCTS;
-  let usersDB = process.env.MONGO_USERS;
-
-  mongoose.createConnection();
-  console.log("database connected");
+const main = async () => {
+  mongoose.connect(process.env.MONGO_PRODUCTS as string);
+  console.log("ProductDB connected");
 };
 
 export default main;
