@@ -1,22 +1,17 @@
-let bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
+// let bcrypt = require("bcryptjs");
 
-function createUser(username, password, uid) {
-  const password = password;
-  const saltRounds = 10;
+function hashPass(password: string) {
+  const salt = 10;
 
-  bcrypt.genSalt(saltRounds, function (saltError, salt) {
-    if (saltError) {
-      throw saltError;
+  bcrypt.hash(password, salt, function (hashError, hash) {
+    if (hashError) {
+      throw hashError;
     } else {
-      bcrypt.hash(password, salt, function (hashError, hash) {
-        if (hashError) {
-          throw hashError;
-        } else {
-          console.log(hash);
-        }
-      });
+      console.log("hash from bcryptfile: ", hash);
+      return hash;
     }
   });
 }
 
-export default createUser;
+export default hashPass;

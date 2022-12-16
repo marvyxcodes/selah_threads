@@ -25,7 +25,3 @@ export default function LoginBtn() {
     </>
   );
 }
-
-//          <Link href="/my-account">
-//
-//               </Link>

@@ -16,6 +16,7 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "async": "^3.2.4",
+    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "eslint": "8.27.0",
@@ -29,6 +30,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.8.4",
+    "uid": "^2.0.1",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {

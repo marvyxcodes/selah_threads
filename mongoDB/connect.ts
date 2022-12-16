@@ -1,14 +1,17 @@
 import mongoose from "mongoose";
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
+import { env } from "process";
 dotenv.config();
 
-let connectionStr = process.env.MONGO_CONNECT as string;
 // create mongodb mongodb connection
 
-// console.log(typeof connectionStr)
+const main = async (database: string) => {
+  let connection: string = "";
+  if (database === "products")
+    connection = process.env.MONGO_PRODUCTS as string;
+  if (database === "users") connection = process.env.MONGO_USERS as string;
 
-const main = async () => {
-  mongoose.connect(connectionStr);
+  mongoose.connect(connection);
   console.log("database connected");
 };
 
