@@ -2,6 +2,7 @@ import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import User from "../../../mongoDB/Models/user";
 import main from "../../../mongoDB/connect";
+import mongoose from "mongoose";
 
 const bcyrpt = require ('bcrypt');
 
@@ -45,14 +46,16 @@ export const authOptions = {
        
         let mongoUser = '';
 
+        console.log('username: ', credentials.username)
+
         // under MONGOOSE docs it says to export schemas instead of MODELS due to connections being only one per model. etc LOOK AT DOCS TO FIX
       
-         let response = await User.find({"username": credentials.username}).exec();
+         let response = await User.find({username: credentials?.username}).exec();
           let data = await JSON.parse(JSON.stringify(response));
 
           console.log('data: ', data);
           
-
+        
         if (mongoUser) {
           // Any object returned will be saved in `user` property of the JWT
 

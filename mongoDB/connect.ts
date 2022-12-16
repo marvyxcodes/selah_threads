@@ -6,12 +6,12 @@ dotenv.config();
 // create mongodb mongodb connection
 
 const main = async (database: string) => {
-  let connection: string = "";
-  if (database === "products")
-    connection = process.env.MONGO_PRODUCTS as string;
-  if (database === "users") connection = process.env.MONGO_USERS as string;
 
-  mongoose.connect(connection);
+  
+  let productsDB = process.env.MONGO_PRODUCTS;
+  let usersDB = process.env.MONGO_USERS;
+
+  mongoose.createConnection();
   console.log("database connected");
 };
 

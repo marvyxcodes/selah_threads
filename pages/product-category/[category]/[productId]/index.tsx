@@ -2,6 +2,7 @@ import React from "react";
 import main from "../../../../mongoDB/connect";
 import Product from "../../../../mongoDB/Models/product";
 import ProductDetails from "../../../../components/ProductDetails";
+import mongoose from "mongoose";
 
 // this ProductPage and the one in collection need to be consolidated somehow
 // if possible. basically got a duplicate here.
@@ -30,6 +31,7 @@ export async function getStaticProps(context) {
   main('products').catch((error) => console.error(error));
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
+
 
   return {
     props: {
