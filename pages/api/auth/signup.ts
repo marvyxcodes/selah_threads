@@ -14,10 +14,9 @@ export default async function handler(
   console.log("user: ", userCreds);
   console.log("password: ", userCreds.password);
 
-  let clientResponse;
 
   if (userCreds.password !== userCreds.rpassword) {
-    clientResponse = res.status(400).json("No Match");
+     return res.status(400).json("No Match");
   }
 
   const salt = await bcrypt.genSalt(10);

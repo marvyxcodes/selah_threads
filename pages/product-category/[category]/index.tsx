@@ -8,6 +8,7 @@ import ProductsGrid from "../../../components/ProductsGrid";
 import BannerImage from "../../../components/BannerImage";
 import main from "../../../mongoDB/connect";
 import Product from "../../../mongoDB/Models/product";
+import mongoose from "mongoose";
 
 // Page renders indiviual collections of popular anime shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
@@ -60,7 +61,7 @@ export async function getStaticProps(context: paramsObj) {
   // Run query that searches for specific mongoDB category as pulled from above.
   if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
 
-  main().catch((error) => console.error(error));
+  main('products').catch((error) => console.error(error));
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
 
@@ -70,6 +71,7 @@ export async function getStaticProps(context: paramsObj) {
       data,
     },
   };
+
 }
 
 // since page is dynamic getStaticPaths must be defined for at least one path.

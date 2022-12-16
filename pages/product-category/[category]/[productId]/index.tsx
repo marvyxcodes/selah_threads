@@ -27,7 +27,7 @@ export async function getStaticProps(context) {
 
   if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
 
-  main().catch((error) => console.error(error));
+  main('products').catch((error) => console.error(error));
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
 

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
-import { env } from "process";
+// import { env } from "process";
 dotenv.config();
 
 // create mongodb mongodb connection

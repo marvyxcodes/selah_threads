@@ -1,16 +1,9 @@
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
+import User from "../../../mongoDB/Models/user";
+import main from "../../../mongoDB/connect";
 
-// type credObj = {
-//   username: {
-//     label: string;
-//     type: string;
-//     placeholder: string;
-//   }
-//   password: {label: string; type: string;}
-// }
-
-// create sign-up page.
+const bcyrpt = require ('bcrypt');
 
 export const authOptions = {
   // NEXTAUTH_URL= DOMAIN NAME ==== THIS IS FOR WHEN PUSHING TO PRODUCTION //
@@ -35,22 +28,35 @@ export const authOptions = {
         },
         password: { label: "Password", type: "password" },
       },
+
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
-        // const user = {}
+        // console.log("credentials: ", credentials);
+        // returns credentials:  {
+        //   csrfToken:'c758d990d886f4ac309d09...',
+        //   username: 'marv',
+        //   password: '3333'
+        // }   
 
-        // here we want to await our mongoose database validation from the MONGODB directory
+        // Connect to MongoDB
+        main('users').catch((err) => console.error(err));
 
-        // credentials is equal to whatever the form values were here. cross reference with Mongodb here using an external function/component
+        console.log('creds: ', credentials);
+       
+        let mongoUser = '';
 
-        console.log("credentials: ", credentials);
-        // console.log("req: ", req);
+        // under MONGOOSE docs it says to export schemas instead of MODELS due to connections being only one per model. etc LOOK AT DOCS TO FIX
+      
+         let response = await User.find({"username": credentials.username}).exec();
+          let data = await JSON.parse(JSON.stringify(response));
 
-        if (user) {
+          console.log('data: ', data);
+          
+
+        if (mongoUser) {
           // Any object returned will be saved in `user` property of the JWT
 
-          return user;
+          return mongoUser;
         } else {
           // If you return null then an error will be displayed advising the user to check their details.
           return null;
