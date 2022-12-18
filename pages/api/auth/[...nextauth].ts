@@ -52,13 +52,14 @@ export const authOptions = {
 
         console.log("data: ", usersArray);
 
+        // if empty array don't run comparison //
+        let comparisonCheck = await bcyrpt.compare(
+          formPassword,
+          usersArray[0].password
+        );
+        console.log(comparisonCheck);
         // check and compare that both username and password hash are valid from mongoDB search, return array where both are true;
-        let mongoUser = usersArray.filter((user) => {
-          return (
-            user.username === formUsername &&
-            bcyrpt.compare(formPassword, user.password)
-          );
-        });
+        let mongoUser = comparisonCheck;
 
         // console.log("mongoUser: ", mongoUser);
 

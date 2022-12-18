@@ -5,10 +5,8 @@ import BreadCrumb from "../../../components/BreadCrumb";
 import FilterNavigationBar from "../../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
 import ProductsGrid from "../../../components/ProductsGrid";
-import BannerImage from "../../../components/BannerImage";
 import main from "../../../mongoDB/connect";
 import Product from "../../../mongoDB/Models/product";
-import mongoose from "mongoose";
 
 // Page renders indiviual collections of popular anime shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.

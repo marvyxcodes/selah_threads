@@ -8,8 +8,11 @@ export default function MyCart() {
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart,
+    getItemQuantity,
     cartItems,
   } = useShoppingCart();
+
+  console.log(cartItems);
 
   let cartElements = cartItems.map((product) => {
     return (
@@ -23,6 +26,7 @@ export default function MyCart() {
           <p>Quantity: {product.quantity}</p>
           <p>Size: M</p>
         </div>
+        <button onClick={() => removeFromCart(product.id)}>Remove</button>
       </div>
     );
   });

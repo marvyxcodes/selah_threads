@@ -24,28 +24,30 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
+// CONTEXT PROVIDER //
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   // this might become obsolete once useEffect code is in place
-  let localCartStore;
-  if (typeof window !== "undefined") {
-    localCartStore = localStorage.getItem("cartItems");
-    localCartStore ? (localCartStore = JSON.parse(localCartStore)) : "";
-  }
+  // let localCartStore;
+  // if (typeof window !== "undefined") {
+  //   localCartStore = localStorage.getItem("cartItems");
+  //   localCartStore ? (localCartStore = JSON.parse(localCartStore)) : "";
+  // }
 
   const [cartItems, setCartItems] = React.useState<CartItem[]>([]);
 
-  function getItemQuantity(id: string) {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  // CART FUNCTIONS //
+  function getItemQuantity(product: object) {
+    return cartItems.find((item) => item._id === product._id)?.quantity || 0;
   }
-  function increaseCartQuantity(id: string) {
-    console.log(id);
+  function increaseCartQuantity(product: object) {
+    // console.log(product);
     setCartItems((currItems) => {
       // USAGE OF == null circumvents in case return case is undefined;;
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
+      if (currItems.find((item) => item._id === product._id) == null) {
+        return [...currItems, { ...product, quantity: 1 }];
       } else {
         return currItems.map((item) => {
-          if (item.id === id) {
+          if (item._id === product._id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;
@@ -54,13 +56,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }
     });
   }
-  function decreaseCartQuantity(id: string) {
+
+  // was able to implement increase quantity and show quantity within cart page using product props, just need to adjust the rest of the functions
+  function decreaseCartQuantity(product: object) {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
+      if (currItems.find((item) => item._id === product._id)?.quantity === 1) {
+        return currItems.filter((item) => item._id !== product._id);
       } else {
         return currItems.map((item) => {
-          if (item.id === id) {
+          if (item._id === product._id) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
             return item;
@@ -75,6 +79,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
+  // GATHER CART ITEMS FROM LOCAL STORAGE IF PRESENT IN CLIENT BROWSER //
   React.useEffect(() => {
     let localCartStore;
     localCartStore = localStorage.getItem("cartItems");
@@ -86,6 +91,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // RETURN PROVIDER TO ALL CHILDREN OF APPLICATION //
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -108,3 +114,5 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 // ... that states ls.getItem should only run if window !== 'undefined'
 // now hydration error exists because when refresh happens, client UI gathers localStorage items and sets state to it,
 // while server has different UI, so to circumvent this, we need to implement useEffect in some way to wait for hydration then update.
+
+// Dec 18 - resolved for now, now need to figure out implementation of cart items data via database?

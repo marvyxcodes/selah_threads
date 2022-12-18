@@ -1,10 +1,8 @@
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
-// import { env } from "process";
 dotenv.config();
 
 // create mongodb mongodb connection
-
 // "createConnection doesn't load product for some reason."
 
 const main = async () => {

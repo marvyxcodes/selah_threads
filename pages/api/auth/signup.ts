@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import userSchema from "../../../mongoDB/Models/user";
 import userConn from "../../../mongoDB/usersConnect";
+import { ServerResponse } from "http";
 
 dotenv.config();
 
@@ -27,6 +28,8 @@ export default async function handler(
 
   let User = userConn.model("user_model", userSchema);
 
+  let serverResponse;
+
   User.create(
     {
       uid: uid(),
@@ -34,9 +37,14 @@ export default async function handler(
       password: newHash,
     },
     function (err, user) {
-      if (err) return console.error(err);
+      if (err) console.error(err);
+      if (user) serverResponse = res.status(200).json("Success");
     }
   );
 
-  res.status(201).json("Success");
+  // figure out this promise and response stuff
+
+  // handle the return of successful and failure creation of user somehow
+  return serverResponse;
+  // if (user) return res.status(201).json("Success");
 }

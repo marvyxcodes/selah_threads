@@ -22,7 +22,7 @@ export default ProductPage;
 
 export async function getStaticProps(context) {
   const { params } = context;
-  console.log(params);
+  // console.log(params);
 
   let urlQuery = { _id: params.productId } as any;
 

@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../styles/Product.module.css";
+import Product from "../mongoDB/Models/product";
+import main from "../mongoDB/connect";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { useRouter } from "next/router";
 
@@ -11,6 +13,8 @@ function ProductDetails({ product }) {
   const itemId = router.query.productId as string;
 
   console.log(cartItems);
+
+  // async function handleCartPopulation(id) {}
 
   return (
     <div className={styles.productContainer}>
@@ -38,7 +42,7 @@ function ProductDetails({ product }) {
         </div>
 
         <button
-          onClick={() => increaseCartQuantity(itemId)}
+          onClick={() => increaseCartQuantity(product)}
           className={styles.addCart}
         >
           Add To Cart
