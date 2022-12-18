@@ -6,13 +6,7 @@ import { useRouter } from "next/router";
 
 function ProductDetails({ product }) {
   const router = useRouter();
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-    cartItems,
-  } = useShoppingCart();
+  const { increaseCartQuantity, cartItems } = useShoppingCart();
 
   const itemId = router.query.productId as string;
 
@@ -42,8 +36,22 @@ function ProductDetails({ product }) {
           <button>M</button>
           <button>L</button>
         </div>
-        {cartItems.length > 0 ? (
-          <div className={styles.cart_options}>
+
+        <button
+          onClick={() => increaseCartQuantity(itemId)}
+          className={styles.addCart}
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default ProductDetails;
+
+{
+  /* <div className={styles.cart_options}>
             <button onClick={() => decreaseCartQuantity(itemId)}>-</button>
             <div className={styles.quantityCount}>
               {cartItems.map((item) => {
@@ -53,18 +61,5 @@ function ProductDetails({ product }) {
               })}
             </div>
             <button onClick={() => increaseCartQuantity(itemId)}>+</button>
-          </div>
-        ) : (
-          <button
-            onClick={() => increaseCartQuantity(itemId)}
-            className={styles.addCart}
-          >
-            Add To Cart
-          </button>
-        )}
-      </div>
-    </div>
-  );
+          </div> */
 }
-
-export default ProductDetails;

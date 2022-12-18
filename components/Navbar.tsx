@@ -4,6 +4,7 @@ import Image from "next/image";
 import NavSubMenu from "./NavSubMenu";
 import Link from "next/link";
 import LoginBtn from "./Login-btn";
+import CartTracker from "./CartTracker";
 
 function Navbar() {
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -72,15 +73,11 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <a>
-                <Image
-                  className="nav-icon"
-                  src="/cartIcon.svg"
-                  alt="User account"
-                  width={35}
-                  height={35}
-                />
-              </a>
+              <Link href="/my-cart">
+                <div>
+                  <CartTracker />
+                </div>
+              </Link>
             </li>
           </ul>
         </div>

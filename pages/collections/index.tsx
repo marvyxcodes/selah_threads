@@ -9,7 +9,7 @@ function index() {
       <Link href="/collections/one-piece">
         <BannerImage urlQuery={"one-piece"} />
       </Link>
-      <Link href="/collections/nartuo">
+      <Link href="/collections/naruto">
         <BannerImage urlQuery={"naruto"} />
       </Link>
       <Link href="/collections/demon-slayer">

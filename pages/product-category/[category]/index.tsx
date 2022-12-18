@@ -73,7 +73,11 @@ export async function getStaticProps(context: paramsObj) {
 // since page is dynamic getStaticPaths must be defined for at least one path.
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { category: "upcoming-releases" } }],
+    paths: [
+      { params: { category: "upcoming-releases" } },
+      { params: { category: "art" } },
+      { params: { category: "limited" } },
+    ],
     fallback: true,
   };
 }
