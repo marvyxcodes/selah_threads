@@ -39,7 +39,9 @@ export default function Signup() {
 
       const response = await fetch(endpoint, options);
       const result = await response.json();
+      console.log(result);
       if (result === "Success") router.push("/api/auth/signin");
+      if (result === "userExists") console.log("user already exists");
     }
   }
 

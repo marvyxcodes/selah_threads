@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import userSchema from "../../../mongoDB/Models/user";
 import userConn from "../../../mongoDB/usersConnect";
-import { ServerResponse } from "http";
 
 dotenv.config();
 
@@ -15,9 +14,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   let userCreds = JSON.parse(req.body);
-
-  console.log("user: ", userCreds);
-  console.log("password: ", userCreds.password);
+  // console.log("user: ", userCreds);
+  // console.log("password: ", userCreds.password);
 
   if (userCreds.password !== userCreds.rpassword) {
     return res.status(400).json("No Match");
@@ -28,23 +26,32 @@ export default async function handler(
 
   let User = userConn.model("user_model", userSchema);
 
-  let serverResponse;
+  const newUser = {
+    uid: uid(),
+    username: userCreds.username,
+    password: newHash,
+  };
 
-  User.create(
-    {
-      uid: uid(),
-      username: userCreds.username,
-      password: newHash,
-    },
-    function (err, user) {
-      if (err) console.error(err);
-      if (user) serverResponse = res.status(200).json("Success");
+  const doesUserExist = await User.findOne({
+    username: userCreds.username,
+  }).exec();
+
+  if (doesUserExist) {
+    return res.status(401).json("userExists");
+  }
+
+  User.create(newUser, function (err, user) {
+    if (err) {
+      console.error("error:", err);
+      return res.status(401).json("error");
     }
-  );
+    if (user) {
+      return res.status(200).json("Success");
+    }
+  });
 
-  // figure out this promise and response stuff
+  // when new user is unique user is created but nothing returned clientside, on console it returns the user object
+  // when error happens it gets logged to console, but not saved to 'result' variable
 
   // handle the return of successful and failure creation of user somehow
-  return serverResponse;
-  // if (user) return res.status(201).json("Success");
 }
