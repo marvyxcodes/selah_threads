@@ -14,7 +14,16 @@ type ShoppingCartContext = {
 };
 
 type CartItem = {
-  id: string;
+  _id: string;
+  category: string;
+  type: string;
+  pathName: string;
+  animeName: string;
+  title: string;
+  desc: string;
+  imgUrl: string;
+  price: number;
+  size: object;
   quantity: number;
 };
 
@@ -36,10 +45,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = React.useState<CartItem[]>([]);
 
   // CART FUNCTIONS //
-  function getItemQuantity(product: object) {
+  function getItemQuantity(product: CartItem) {
     return cartItems.find((item) => item._id === product._id)?.quantity || 0;
   }
-  function increaseCartQuantity(product: object) {
+  function increaseCartQuantity(product: CartItem) {
     // console.log(product);
     setCartItems((currItems) => {
       // USAGE OF == null circumvents in case return case is undefined;;
@@ -58,7 +67,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   // was able to implement increase quantity and show quantity within cart page using product props, just need to adjust the rest of the functions
-  function decreaseCartQuantity(product: object) {
+  function decreaseCartQuantity(product: CartItem) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item._id === product._id)?.quantity === 1) {
         return currItems.filter((item) => item._id !== product._id);
@@ -75,7 +84,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
   function removeFromCart(id: string) {
     setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
+      return currItems.filter((item) => item._id !== id);
     });
   }
 

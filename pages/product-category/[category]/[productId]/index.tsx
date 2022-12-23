@@ -26,7 +26,10 @@ export async function getStaticProps(context) {
 
   let urlQuery = { _id: params.productId } as any;
 
-  if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
+  console.log(urlQuery);
+
+  // this causes bug if kept within the clothing section, revisit if productDetails doesn't match up
+  // if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
 
   main().catch((error) => console.error(error));
   const response = await Product.find(urlQuery).exec();

@@ -15,26 +15,34 @@ export default function MyCart() {
   console.log(cartItems);
 
   let cartElements = cartItems.map((product) => {
+    console.log(product);
     return (
-      <div className={styles.cartProducts} key={product.id}>
-        <div>
-          <Image src="/searchIcon.svg" alt="product" width={100} height={100} />
+      <>
+        <div className={styles.cartProducts} key={product._id}>
+          <div className={`productImg ${styles.cartImg}`}>
+            <Image src={product.imgUrl} alt="product" fill />
+          </div>
+          <div>
+            <h1>{product.title}</h1>
+            <p>$58</p>
+            <p>Quantity: {product.quantity}</p>
+            <p>Size: M</p>
+            <button
+              className={styles.removeBtn}
+              onClick={() => removeFromCart(product._id)}
+            >
+              Remove
+            </button>
+          </div>
         </div>
-        <div>
-          <h1>{product.id}</h1>
-          <p>$58</p>
-          <p>Quantity: {product.quantity}</p>
-          <p>Size: M</p>
-        </div>
-        <button onClick={() => removeFromCart(product.id)}>Remove</button>
-      </div>
+        <hr />
+      </>
     );
   });
   return (
     <div>
       <h1>Shopping Cart</h1>
-      {cartElements}
-      {"elements here"}
+      <div className="cartContainer">{cartElements}</div>
     </div>
   );
 }

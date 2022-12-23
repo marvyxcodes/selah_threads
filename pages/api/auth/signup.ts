@@ -37,16 +37,16 @@ export default async function handler(
   }).exec();
 
   if (doesUserExist) {
-    return res.status(401).json("userExists");
+    return res.status(409).json("userExists");
   }
 
   User.create(newUser, function (err, user) {
     if (err) {
       console.error("error:", err);
-      return res.status(401).json("error");
+      return res.status(500).json("Error");
     }
     if (user) {
-      return res.status(200).json("Success");
+      return res.status(201).json("Success");
     }
   });
 

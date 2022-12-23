@@ -7,6 +7,7 @@ import Link from "next/link";
 
 interface Props {
   productData: {
+    _id: string;
     category: string;
     type: string;
     pathName: string;
@@ -22,6 +23,8 @@ interface Props {
 function ProductsGrid(props: Props) {
   const { productData } = props;
   const router = useRouter();
+
+  console.log(productData);
 
   // console.log("route q: ", router);
 

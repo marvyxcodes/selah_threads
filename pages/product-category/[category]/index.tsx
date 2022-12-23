@@ -54,6 +54,8 @@ export async function getStaticProps(context: paramsObj) {
   // this gets the selected parameter and assigns it. example:
   // params: {category: 'art'} => product-category/art
 
+  console.log(params);
+
   // Run query that searches for specific mongoDB category as pulled from above.
   if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
 

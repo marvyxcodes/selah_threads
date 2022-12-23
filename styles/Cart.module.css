@@ -1,4 +1,22 @@
 .cartProducts {
   display: flex;
   margin: 1rem;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.cartProducts h1 {
+  font-size: 1.2rem;
+  border-bottom: 1px solid black;
+}
+
+.cartImg {
+  min-width: 250px;
+  min-height: 300px;
+  position: relative;
+}
+
+.removeBtn {
+  text-decoration: underline;
+  font-size: 16px;
 }
