@@ -1,8 +1,16 @@
 .cartProducts {
   display: flex;
-  margin: 1rem;
-  justify-content: space-between;
-  text-align: right;
+  margin: 1rem; 
+  text-align: left;
+}
+
+.cartInfo {
+  margin-left:2rem;
+  text-align: center;
+}
+
+.cartInfo * {
+  margin: .2rem 0;
 }
 
 .cartProducts h1 {
@@ -11,12 +19,22 @@
 }
 
 .cartImg {
-  min-width: 250px;
-  min-height: 300px;
+  min-width: 150px;
+  min-height: 200px;
   position: relative;
 }
 
 .removeBtn {
   text-decoration: underline;
   font-size: 16px;
+}
+
+.quantityAdjuster button {
+  border-radius: 4px;
+  background-color: black;
+  color:white;
+  margin: 0 1rem; 
+  width: 30px;
+  height: 30px;
+
 }

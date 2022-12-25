@@ -15,14 +15,13 @@ export default function MyCart() {
   console.log(cartItems);
 
   let cartElements = cartItems.map((product) => {
-    console.log(product);
     return (
-      <>
-        <div className={styles.cartProducts} key={product._id}>
+      <div key={product._id}>
+        <div className={styles.cartProducts}>
           <div className={`productImg ${styles.cartImg}`}>
             <Image src={product.imgUrl} alt="product" fill />
           </div>
-          <div>
+          <div className={styles.cartInfo}>
             <h1>{product.title}</h1>
             <p>$58</p>
             <p>Quantity: {product.quantity}</p>
@@ -33,10 +32,14 @@ export default function MyCart() {
             >
               Remove
             </button>
+            <div className={styles.quantityAdjuster}>
+              <button onClick={() => decreaseCartQuantity(product)}>-</button>
+              <button onClick={() => increaseCartQuantity(product)}>+</button>
+            </div>
           </div>
         </div>
         <hr />
-      </>
+        </div>
     );
   });
   return (

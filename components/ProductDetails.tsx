@@ -14,7 +14,6 @@ function ProductDetails({ product }) {
 
   console.log(cartItems);
 
-  // async function handleCartPopulation(id) {}
 
   return (
     <div className={styles.productContainer}>
@@ -54,16 +53,3 @@ function ProductDetails({ product }) {
 
 export default ProductDetails;
 
-{
-  /* <div className={styles.cart_options}>
-            <button onClick={() => decreaseCartQuantity(itemId)}>-</button>
-            <div className={styles.quantityCount}>
-              {cartItems.map((item) => {
-                if (item.id === itemId) {
-                  return item.quantity;
-                }
-              })}
-            </div>
-            <button onClick={() => increaseCartQuantity(itemId)}>+</button>
-          </div> */
-}

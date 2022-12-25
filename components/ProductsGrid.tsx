@@ -24,7 +24,7 @@ function ProductsGrid(props: Props) {
   const { productData } = props;
   const router = useRouter();
 
-  console.log(productData);
+  // console.log(productData);
 
   // console.log("route q: ", router);
 
