@@ -7,7 +7,7 @@ dotenv.config();
 
 const main = async () => {
   mongoose.connect(process.env.MONGO_PRODUCTS as string);
-  console.log("ProductDB connected");
+  // console.log("ProductDB connected");
 };
 
 export default main;
