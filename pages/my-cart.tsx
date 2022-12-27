@@ -29,7 +29,7 @@ export default function MyCart() {
           <div className={`productImg ${styles.cartImg}`}>
             <Image src={product.imgUrl} alt="product" fill />
           </div>
-          <div>
+          <div className={styles.cartInfo}>
             <h1>{product.title}</h1>
             <p>{product.price}</p>
             <p>Quantity:{product.quantity}</p>
@@ -40,6 +40,10 @@ export default function MyCart() {
             >
               Remove
             </button>
+            <div className={styles.quantityAdjuster}>
+              <button onClick={() => decreaseCartQuantity(product)}>-</button>
+              <button onClick={() => increaseCartQuantity(product)}>+</button>
+            </div>
           </div>
         </div>
         <hr />

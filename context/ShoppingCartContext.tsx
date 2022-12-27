@@ -7,8 +7,8 @@ type ShoppingCartProviderProps = {
 
 type ShoppingCartContext = {
   getItemQuantity: (id: string) => number;
-  increaseCartQuantity: (id: string) => void;
-  decreaseCartQuantity: (id: string) => void;
+  increaseCartQuantity: (id: CartItem) => void;
+  decreaseCartQuantity: (id: CartItem) => void;
   removeFromCart: (id: string) => void;
   cartItems: CartItem[];
 };
@@ -49,7 +49,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return cartItems.find((item) => item._id === product._id)?.quantity || 0;
   }
   function increaseCartQuantity(product: CartItem) {
-    // console.log(product);
     setCartItems((currItems) => {
       // USAGE OF == null circumvents in case return case is undefined;;
       if (currItems.find((item) => item._id === product._id) == null) {

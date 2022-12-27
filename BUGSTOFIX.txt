@@ -11,6 +11,9 @@
     -Image size inconsistencies need fixing
 
 
+12/25/22 
+    - I might be doing unnecessary data fetching when going into product details page.
+    Products are already pulled in when grid page is pulled, so maybe use data already present instead of fetching every single product.
 
 
 ========= Warnings ============

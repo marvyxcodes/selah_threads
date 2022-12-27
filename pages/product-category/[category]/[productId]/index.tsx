@@ -9,7 +9,9 @@ import mongoose from "mongoose";
 
 function ProductPage({ productInfo }: any) {
   // this returns undefined if fallback is set to true. If change is needed, make sure to include fallback loading so this doesn't run first.
+
   const product = productInfo[0];
+  console.log(product);
 
   return (
     <div className="productContainer">
