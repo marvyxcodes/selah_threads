@@ -37,6 +37,8 @@ export async function getStaticProps(context) {
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
 
+  console.log(data);
+
   return {
     props: {
       productInfo: data,

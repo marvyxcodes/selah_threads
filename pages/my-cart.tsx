@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import styles from "../styles/Cart.module.css";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string);
 
 export default function MyCart() {
   const {
@@ -12,15 +15,39 @@ export default function MyCart() {
     cartItems,
   } = useShoppingCart();
 
-  console.log("cart:", cartItems);
+  let cartSubTotal = cartItems.reduce((prev, curr) => {
+    return prev + curr.price * curr.quantity;
+  }, 0);
 
-  let cartSubTotal = cartItems.forEach((item) => {
-    let total = 0;
-    console.log(item.price * item.quantity);
-  });
+  let totalCartItems = cartItems.reduce((prev, curr) => {
+    return prev + curr.quantity;
+  }, 0);
 
-  console.log(cartSubTotal);
+  async function handleCheckoutRequest(e: any) {
+    e.preventDefault();
+    fetch("/api/checkout_sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cartItems,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject("fail"));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
 
+  // getting internal 500 error when submitting cart. figure out the issue.
   let cartElements = cartItems.map((product) => {
     // console.log(product);
     return (
@@ -31,8 +58,8 @@ export default function MyCart() {
           </div>
           <div className={styles.cartInfo}>
             <h1>{product.title}</h1>
-            <p>{product.price}</p>
-            <p>Quantity:{product.quantity}</p>
+            <p>${product.price} / x1</p>
+            <p>Quantity: {product.quantity}</p>
             <p>Size: M</p>
             <button
               className={styles.removeBtn}
@@ -58,14 +85,21 @@ export default function MyCart() {
         </div>
         {cartElements}
       </div>
+
       <div className={styles.cartSummary}>
-        <h1>Cart Summary</h1>
-        <h3>Total Items: {cartItems.length}</h3>
-        <p>Sub-Total Amount: </p>
-        <p>Shipping:</p>
-        <p>Taxes:</p>
-        <button className={styles.checkoutBtn}>Checkout</button>
+        <form onSubmit={handleCheckoutRequest}>
+          <h1>Cart Summary</h1>
+          <h3>Total Items: {totalCartItems}</h3>
+          <p>Sub-Total Amount: {cartSubTotal}</p>
+          <p>Shipping:</p>
+          <p>Taxes:</p>
+          <button type="submit" className={styles.checkoutBtn}>
+            Checkout
+          </button>
+        </form>
       </div>
     </div>
   );
 }
+
+// action="/api/checkout_sessions" method="POST"
