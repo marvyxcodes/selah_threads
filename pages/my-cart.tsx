@@ -15,6 +15,11 @@ export default function MyCart() {
     cartItems,
   } = useShoppingCart();
 
+  // if cart is empty / conditionally render empty cart page
+  // if (!cartItems) {
+  //   return;
+  // }
+
   let cartSubTotal = cartItems.reduce((prev, curr) => {
     return prev + curr.price * curr.quantity;
   }, 0);
@@ -41,7 +46,7 @@ export default function MyCart() {
       })
       .then(({ url }) => {
         console.log(url);
-        window.location = url
+        window.location = url;
       })
       .catch((e) => {
         console.error(e);

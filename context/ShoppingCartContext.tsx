@@ -6,14 +6,14 @@ type ShoppingCartProviderProps = {
 };
 
 type ShoppingCartContext = {
-  getItemQuantity: (id: string) => number;
+  getItemQuantity: (id: CartItem) => number;
   increaseCartQuantity: (id: CartItem) => void;
   decreaseCartQuantity: (id: CartItem) => void;
   removeFromCart: (id: string) => void;
   cartItems: CartItem[];
 };
 
-type CartItem = {
+export type CartItem = {
   _id: string;
   category: string;
   type: string;
@@ -91,8 +91,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   React.useEffect(() => {
     let localCartStore;
     localCartStore = localStorage.getItem("cartItems");
-    localCartStore ? (localCartStore = JSON.parse(localCartStore)) : [];
-    setCartItems(localCartStore);
+    localCartStore
+      ? setCartItems(JSON.parse(localCartStore))
+      : setCartItems([]);
   }, []);
 
   React.useEffect(() => {
