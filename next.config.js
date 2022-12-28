@@ -31,6 +31,17 @@ module.exports = {
   },
 };
 
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://checkout.stripe.com",
+      },
+    ];
+  },
+};
+
 // Remote images must be explicity allowed via hostname and path for security purposes. I am just using hostname for now
 module.exports = {
   images: {

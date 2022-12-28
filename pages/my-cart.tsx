@@ -40,7 +40,8 @@ export default function MyCart() {
         return res.json().then((json) => Promise.reject("fail"));
       })
       .then(({ url }) => {
-        window.location = url;
+        console.log(url);
+        window.location = url
       })
       .catch((e) => {
         console.error(e);
