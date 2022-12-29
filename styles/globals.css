@@ -58,7 +58,6 @@ a {
   justify-content: center;
   min-width: 120px;
   align-items: center;
-  cursor: pointer;
 }
 
 .collectionsImg {
@@ -90,3 +89,9 @@ a {
     color: black;
   }
 } */
+
+
+@media only screen and (max-width: 700px) {
+  
+
+}

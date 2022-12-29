@@ -58,13 +58,7 @@ export default function Home() {
             url="/product-category/limited"
           />
         </section>
-        {/* <Image
-          src="/zero-two-welcome.png"
-          alt="zero two from Darling in the franxx"
-          className={styles.zero_two}
-          width={200}
-          height={400}
-        /> */}
+        
       </main>
 
       <Footer />

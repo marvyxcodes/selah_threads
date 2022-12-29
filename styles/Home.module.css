@@ -65,8 +65,8 @@
 }
 
 .navLinks {
+  display: flex;
   gap: 0 1rem;
-  @apply flex;
 }
 .sub-menu {
   transition: opacity 0.2s;
