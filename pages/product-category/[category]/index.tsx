@@ -79,6 +79,8 @@ export async function getStaticPaths() {
       { params: { category: "upcoming-releases" } },
       { params: { category: "art" } },
       { params: { category: "limited" } },
+      { params: { category: "clothing" } },
+
     ],
     fallback: true,
   };
