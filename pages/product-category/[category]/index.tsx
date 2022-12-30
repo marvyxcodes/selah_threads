@@ -20,7 +20,7 @@ export default function Category(products: staticProps) {
   const router = useRouter();
   let urlQuery = router.query.category;
 
-  console.log(products);
+  // console.log(products);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -80,7 +80,6 @@ export async function getStaticPaths() {
       { params: { category: "art" } },
       { params: { category: "limited" } },
       { params: { category: "clothing" } },
-
     ],
     fallback: true,
   };

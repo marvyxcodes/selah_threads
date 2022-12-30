@@ -6,14 +6,13 @@ import main from "../mongoDB/connect";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { useRouter } from "next/router";
 
-function ProductDetails({ product }) {
+function ProductDetails({ product }: any) {
   const router = useRouter();
   const { increaseCartQuantity, cartItems } = useShoppingCart();
 
   const itemId = router.query.productId as string;
 
-  console.log(cartItems);
-
+  // console.log(cartItems);
 
   return (
     <div className={styles.productContainer}>
@@ -52,4 +51,3 @@ function ProductDetails({ product }) {
 }
 
 export default ProductDetails;
-

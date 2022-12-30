@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import userSchema from "../../../mongoDB/Models/user";
 import userConn from "../../../mongoDB/usersConnect";
+import { unstable_getServerSession } from "next-auth";
+import { authOptions } from "./[...nextauth]";
 
 dotenv.config();
 
@@ -13,7 +15,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log(req.body);
+
+  if (!req.body) return res.status(404).redirect("/not-found");
+
   let userCreds = JSON.parse(req.body);
+
   // console.log("user: ", userCreds);
   // console.log("password: ", userCreds.password);
 

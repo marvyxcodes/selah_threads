@@ -41,7 +41,7 @@ export default async function handler(
     });
   });
 
-  console.log(mappedItems);
+  // console.log(mappedItems);
 
   // Client POSTS cart items, API handles pull from DB to get server information, that client can't mess with.
   // Map over items retrieved from DB to apply stripe pricing/data
