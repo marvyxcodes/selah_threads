@@ -12,7 +12,7 @@ function ProductPage({ productInfo }: any) {
   // this returns undefined if fallback is set to true. If change is needed, make sure to include fallback loading so this doesn't run first.
 
   const product = productInfo[0];
-  console.log(product);
+  // console.log(product);
 
   return (
     <div className="productContainer">
@@ -29,7 +29,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   let urlQuery = { _id: params?.productId } as any;
 
-  console.log(urlQuery);
+  // console.log(urlQuery);
 
   // this causes bug if kept within the clothing section, revisit if productDetails doesn't match up
   // if (params.category === "clothing") urlQuery = { type: { $ne: "art" } };
@@ -38,7 +38,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
 
-  console.log(data);
+  // console.log(data);
 
   return {
     props: {
@@ -51,7 +51,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { category: "upcoming-releases", productId: "" } }],
+    paths: [],
     fallback: "blocking",
   };
 }

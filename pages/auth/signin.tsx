@@ -2,10 +2,24 @@ import React from "react";
 import { getCsrfToken } from "next-auth/react";
 import styles from "../../styles/Credentials.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { GetServerSidePropsContext } from "next";
 
-export default function SignIn({ csrfToken }) {
+export default function SignIn({ csrfToken }: any) {
+  const router = useRouter();
+
+  // upon inital load check if login error is detected within query object.
+  // This is done so when wrong credentials are input, same login page is returned,
+  // but necessary checks are done regarding url query on callbacks.
+  let signInError = router.query.error;
+
   return (
-    <>
+    <div className={styles.credentials_container}>
+      {signInError && (
+        <div className={styles.loginError}>
+          <p>Username or Password are invalid</p>
+        </div>
+      )}
       <form
         className={styles.login_form}
         method="POST"
@@ -27,11 +41,11 @@ export default function SignIn({ csrfToken }) {
           New User? Sign up <Link href="/auth/signup">here.</Link>
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       csrfToken: await getCsrfToken(context),

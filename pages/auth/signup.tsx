@@ -11,7 +11,7 @@ export default function Signup() {
   const [password, setPassword] = React.useState();
 
   // i can do client-side validation of password confirmations?,
-  async function handleSubmit(e) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     const username = e.target.username;
     const password = e.target.password;

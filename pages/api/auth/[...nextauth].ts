@@ -10,9 +10,10 @@ dotenv.config();
 
 export const authOptions = {
   // NEXTAUTH_URL= DOMAIN NAME ==== THIS IS FOR WHEN PUSHING TO PRODUCTION //
+  // secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/auth/signin",
-    error: "/auth/error",
+    error: "/auth/signin",
   },
   providers: [
     Credentials({
@@ -37,33 +38,34 @@ export const authOptions = {
         const formUsername = credentials?.username;
         const formPassword = credentials?.password;
 
+        // console.log("creds: ", credentials);
+
         // Connect to Mongoose DB of users.
         let User = userConn.model("user_model", userSchema);
         // under MONGOOSE docs it says to export schemas instead of MODELS due to connections being only one per model. etc LOOK AT DOCS TO FIX
         const response = await User.find({ username: formUsername }).exec();
 
         let mongoUser = null;
-        if (response.length > 0 ){
+
+        if (response.length > 0) {
           let usersArray = await JSON.parse(JSON.stringify(response));
           // if empty array don't run comparison //
           let comparisonCheck = await bcyrpt.compare(
-          formPassword,
-          usersArray[0].password
+            formPassword,
+            usersArray[0].password
           );
           mongoUser = comparisonCheck;
         }
-        
-        
+
         // check and compare that both username and password hash are valid from mongoDB search, return array where both are true;
-        
 
         if (mongoUser) {
           // Any object returned will be saved in `user` property of the JWT
           return mongoUser;
         } else {
           // If you return null then an error will be displayed advising the user to check their details.
-          throw new Error("Invalid")
-          return null;
+          throw new Error("invalid-credentials");
+          // return null;
 
           // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
         }
