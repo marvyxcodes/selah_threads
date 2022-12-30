@@ -2,14 +2,24 @@ import React from "react";
 import { getCsrfToken } from "next-auth/react";
 import styles from "../../styles/Credentials.module.css";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function SignIn({ csrfToken }) {
+
+
+
+  
   return (
     <>
       <form
         className={styles.login_form}
-        method="POST"
-        action="/api/auth/callback/credentials"
+        method='POST'
+        onSubmit={() => signIn('credentials', {
+          redirect: false,
+          username: 'test',
+          password: 'test2',
+        }).then((err) => {console.log(err)}).catch(err => console.error(err))
+      }
       >
         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label>
