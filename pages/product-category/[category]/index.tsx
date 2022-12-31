@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "styles/ProductPage.module.css";
-import Image from "next/image";
 import BreadCrumb from "../../../components/BreadCrumb";
 import FilterNavigationBar from "../../../components/FilterNavigationBar";
 import { useRouter } from "next/router";
