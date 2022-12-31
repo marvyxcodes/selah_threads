@@ -35,13 +35,6 @@ export function useShoppingCart() {
 
 // CONTEXT PROVIDER //
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  // this might become obsolete once useEffect code is in place
-  // let localCartStore;
-  // if (typeof window !== "undefined") {
-  //   localCartStore = localStorage.getItem("cartItems");
-  //   localCartStore ? (localCartStore = JSON.parse(localCartStore)) : "";
-  // }
-
   const [cartItems, setCartItems] = React.useState<CartItem[]>([]);
 
   // CART FUNCTIONS //

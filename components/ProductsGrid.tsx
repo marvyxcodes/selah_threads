@@ -20,6 +20,9 @@ interface Props {
   }[];
 }
 
+
+// I could set a global state to store the current products grid products to avoid pulling from database upon clicking product details
+
 function ProductsGrid(props: Props) {
   const { productData } = props;
   const router = useRouter();

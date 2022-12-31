@@ -2,7 +2,6 @@ import React from "react";
 import main from "../../../../mongoDB/connect";
 import Product from "../../../../mongoDB/Models/product";
 import ProductDetails from "../../../../components/ProductDetails";
-import mongoose from "mongoose";
 import { GetStaticPropsContext } from "next";
 
 // this ProductPage and the one in collection need to be consolidated somehow

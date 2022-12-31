@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import ProductsGrid from "../../../components/ProductsGrid";
 import main from "../../../mongoDB/connect";
 import Product from "../../../mongoDB/Models/product";
-
+import { useProducts } from "../../../context/ProductsGridContext";
 // Page renders indiviual collections of popular anime shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
 
@@ -15,17 +15,27 @@ type staticProps = {
 };
 
 export default function Category(products: staticProps) {
+
   const propsData = products.data as any;
   const router = useRouter();
   let urlQuery = router.query.category;
 
-  // console.log(products);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
+  const {prodCont, setProdCont} = useProducts();
+
   // console.log("router :", router);
+
+  console.log(prodCont);
+
+  //used to set context of products 
+  React.useEffect(()=> {
+    setProdCont(products);
+
+  },[])
 
   return (
     <section className={styles["product-container"]}>
@@ -64,6 +74,7 @@ export async function getStaticProps(context: paramsObj) {
   const response = await Product.find(urlQuery).exec();
   let data = await JSON.parse(JSON.stringify(response));
   //data returns full array of objects associated with category and is returned to page via props.
+
   return {
     props: {
       data,
