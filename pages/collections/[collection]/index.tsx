@@ -73,10 +73,6 @@ export async function getStaticPaths() {
   return {
     paths: [
       { params: { collection: "one-piece" } },
-      { params: { collection: "naruto" } },
-      { params: { collection: "demon-slayer" } },
-      { params: { collection: "attack-on-titan" } },
-      { params: { collection: "my-hero-academia" } },
     ],
     fallback: true,
   };
