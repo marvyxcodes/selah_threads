@@ -71,9 +71,7 @@ export async function getStaticProps(context: paramsObj) {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { collection: "one-piece" } },
-    ],
+    paths: [],
     fallback: true,
   };
 }
