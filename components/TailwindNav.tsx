@@ -167,7 +167,6 @@ export default function TailwindNav() {
               {navigation.map((item) => (
                 <Link
                   key={item.name}
-                  as="a"
                   href={item.href}
                   className={classNames(
                     item.current
