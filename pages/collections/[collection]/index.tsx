@@ -8,6 +8,7 @@ import ProductsGrid from "../../../components/ProductsGrid";
 import BannerImage from "../../../components/BannerImage";
 import Product from "../../../mongoDB/Models/product";
 import main from "../../../mongoDB/connect";
+import { useProducts } from "../../../context/ProductsGridContext";
 
 // Page renders indiviual collections of popular animecollection shows.
 // Upon clicking NavBar collection dynamically hydrate client dom with selected choice.
@@ -31,6 +32,14 @@ export default function CollectionPage(products: Props) {
     return <div>Loading...</div>;
   }
 
+  // const {prodCont, setProdCont} = useProducts();
+  // console.log(prodCont);
+  
+  // //used to set context of products 
+  // React.useEffect(()=> {
+  //   setProdCont(products);
+  // },[])
+
   return (
     <section className={styles["product-container"]}>
       <BreadCrumb />
@@ -46,6 +55,7 @@ export default function CollectionPage(products: Props) {
     </section>
   );
 }
+
 
 //  STATIC GENERATION SECTION //
 interface paramsObj {

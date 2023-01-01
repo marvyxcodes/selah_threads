@@ -15,7 +15,6 @@ type staticProps = {
 };
 
 export default function Category(products: staticProps) {
-
   const propsData = products.data as any;
   const router = useRouter();
   let urlQuery = router.query.category;
@@ -24,18 +23,7 @@ export default function Category(products: staticProps) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  const {prodCont, setProdCont} = useProducts();
-
   // console.log("router :", router);
-
-  console.log(prodCont);
-
-  //used to set context of products 
-  React.useEffect(()=> {
-    setProdCont(products);
-
-  },[])
 
   return (
     <section className={styles["product-container"]}>
@@ -89,3 +77,16 @@ export async function getStaticPaths() {
     fallback: true,
   };
 }
+
+
+// failed attempt at creating local context of products
+// will revisit if necessary.
+// probably need to use useRouter to detect changes in order to change state
+
+// const {prodCont, setProdCont} = useProducts();
+//   console.log(prodCont);
+
+//   //used to set context of products 
+//   React.useEffect(()=> {
+//     setProdCont(products);
+//   },[])

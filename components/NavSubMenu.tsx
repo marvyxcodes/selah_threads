@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from "react";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 function NavSubMenu(props: {
   handleMouseOver: MouseEventHandler;
@@ -64,7 +65,7 @@ function NavSubMenu(props: {
     listElements = collections.map((obj) => {
       return (
         <li key={obj.anime} className={styles["colletions-list"]}>
-          <a href={obj.link}>
+          <Link href={obj.link}>
             <Image
               className="collectionsImg"
               alt={obj.anime}
@@ -73,7 +74,7 @@ function NavSubMenu(props: {
               height={100}
             />
             <p>{obj.anime}</p>
-          </a>
+          </Link>
         </li>
       );
     });
