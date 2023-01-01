@@ -16,7 +16,7 @@ const navigation = [
   { name: "Clothing", href: "/product-category/clothing", current: false },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
