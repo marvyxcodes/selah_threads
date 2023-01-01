@@ -26,11 +26,10 @@ function Navbar() {
   return (
     <header className="shadow sticky top-0">
       <nav className="nav h-full flex justify-evenly items-center">
-      <Link className="logo" href="/">
-            <Image src="/weebLogo.svg" alt="Weeb Logo" fill />
-          </Link>
+        <Link className="logo" href="/">
+          <Image src="/weebLogo.svg" alt="Weeb Logo" fill />
+        </Link>
         <div className="primary-nav flex items-center">
-          
           <ul className={`nav-list ${styles.navLinks}`}>
             {/* <li>
               <Link href="/product-category/new">NEW</Link>
@@ -67,7 +66,7 @@ function Navbar() {
                 <Image
                   className="nav-icon"
                   src="/searchIcon.svg"
-                  alt="User account"
+                  alt="Search"
                   width={35}
                   height={35}
                 />
