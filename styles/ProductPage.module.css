@@ -49,6 +49,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 1rem 0;
+  padding: 0 2rem;
   justify-content: space-evenly;
 }
 
@@ -66,4 +67,16 @@
   cursor: pointer;
   transform: scale(1.02);
   transition: transform 0.1s;
+}
+
+@media only screen and (max-width: 750px) {
+  .productBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .imgContainer {
+    max-width: 150px;
+    max-height: 200px;
+  }
 }

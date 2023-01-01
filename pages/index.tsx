@@ -1,4 +1,3 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import MainBanner from "../components/MainBanner";
 import { FPModule } from "../components/FPModule";
@@ -7,8 +6,12 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
+      {/* <Head>
         <title>Weeb Max</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
         <meta
           name="description"
           content="Website dedicated anime related merchandise"
@@ -34,7 +37,7 @@ export default function Home() {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#b91d47" />
         <meta name="theme-color" content="#ffffff" />
-      </Head>
+      </Head> */}
 
       <main className={styles.main}>
         {/* <Link href="/api/collections/one-piece">api test</Link> */}
@@ -58,7 +61,6 @@ export default function Home() {
             url="/product-category/limited"
           />
         </section>
-        
       </main>
 
       <Footer />

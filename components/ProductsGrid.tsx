@@ -36,19 +36,21 @@ function ProductsGrid(props: Props) {
   let gridEl = productData.map((product) => {
     // proudct key is going to be equal to SKU id in future
     return (
-      <Link key={uniqid()} href={`${currentPath}/${product._id}`}>
-        <div className={styles.productBox} key={uniqid()}>
-          <div className={styles.imgContainer}>
-            <Image
-              fill
-              className="productImg"
-              alt="product image"
-              src={product.imgUrl}
-            />
-          </div>
-          <p>{product.title}</p>
-          <p>{`$ ${product.price}`}</p>
+      <Link
+        className={styles.productBox}
+        key={uniqid()}
+        href={`${currentPath}/${product._id}`}
+      >
+        <div className={styles.imgContainer}>
+          <Image
+            fill
+            className="productImg"
+            alt="product image"
+            src={product.imgUrl}
+          />
         </div>
+        <p>{product.title}</p>
+        <p>{`$ ${product.price}`}</p>
       </Link>
     );
   });
