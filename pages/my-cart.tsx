@@ -15,13 +15,9 @@ export default function MyCart() {
     cartItems,
   } = useShoppingCart();
 
-  // if cart is empty / conditionally render empty cart page
-  // if (!cartItems) {
-  //   return;
-  // }
-
   let cartSubTotal = cartItems.reduce((prev, curr) => {
-    return prev + curr.price * curr.quantity;
+    // tax is based at 1.39 just because lazy duh.
+    return prev + curr.price * curr.quantity + 1.39;
   }, 0);
 
   let totalCartItems = cartItems.reduce((prev, curr) => {
@@ -83,29 +79,39 @@ export default function MyCart() {
       </div>
     );
   });
-  return (
-    <div className={styles.cartPage}>
-      <div className={styles.itemsContainer}>
-        <div className={styles.cartHeader}>
-          <h1>Shopping Cart</h1>
-        </div>
-        {cartElements}
-      </div>
 
-      <div className={styles.cartSummary}>
-        <form onSubmit={handleCheckoutRequest}>
-          <h1>Cart Summary</h1>
-          <h3>Total Items: {totalCartItems}</h3>
-          <p>Sub-Total Amount: {cartSubTotal}</p>
-          <p>Shipping:</p>
-          <p>Taxes:</p>
-          <button type="submit" className={styles.checkoutBtn}>
-            Checkout
-          </button>
-        </form>
+  if (!cartItems.length) {
+    return (
+      <div className={styles.emptyCart}>
+        <h1>Your cart is empty</h1>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={styles.cartPage}>
+        <div className={styles.itemsContainer}>
+          <div className={styles.cartHeader}>
+            <h1>Shopping Cart</h1>
+          </div>
+          {cartElements}
+        </div>
+
+        <div className={styles.cartSummary}>
+          <form onSubmit={handleCheckoutRequest}>
+            <h1>Cart Summary</h1>
+            <h3>Total Items: {totalCartItems}</h3>
+            <p>Shipping: Free</p>
+            <p>Estimated tax: $1.39</p>
+            <p>Est. Total: ${cartSubTotal}</p>
+
+            <button type="submit" className={styles.checkoutBtn}>
+              Checkout
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
 // action="/api/checkout_sessions" method="POST"

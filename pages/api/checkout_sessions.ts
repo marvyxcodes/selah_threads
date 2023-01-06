@@ -15,6 +15,8 @@ export default async function handler(
     console.log(err);
   });
 
+  if (!req.body) res.status(404).redirect("/");
+
   // Gather items from request body and map item id's into array
   let cartItems = req.body.cartItems.map((item: CartItem) => {
     return item._id;

@@ -32,6 +32,8 @@
 
 .cartPage {
   display: flex;
+  height: 100vh;
+  background-color: rgb(238, 238, 238);
 }
 
 .itemsContainer {
@@ -43,9 +45,14 @@
   justify-content: space-between;
 }
 
+.cartHeader h1 {
+  font-size: 2rem;
+}
+
 .cartSummary {
   display: flex;
   flex-direction: column;
+  margin-left: 4rem;
   width: 30vw;
   padding: 0.3rem 1rem;
 }
@@ -65,4 +72,11 @@
   color: white;
   width: 30px;
   height: 30px;
+}
+
+.emptyCart {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  font-size: 2rem;
 }

@@ -17,7 +17,7 @@ export default async function handler(
 ) {
   console.log(req.body);
 
-  if (!req.body) return res.status(404).redirect("/not-found");
+  if (!req.body) return res.status(404).redirect("/");
 
   let userCreds = JSON.parse(req.body);
 
