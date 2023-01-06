@@ -3,11 +3,11 @@ import Image from "next/image";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import styles from "../styles/Home.module.css";
 
-function CartTracker() {
+function CartButton() {
   const { cartItems } = useShoppingCart();
 
   return (
-    <div>
+    <>
       {cartItems.length > 0 ? (
         <div className={`nav-icon ${styles.cartCount}`}>
           <p>{cartItems.length}</p>
@@ -17,12 +17,12 @@ function CartTracker() {
           className="nav-icon"
           src="/cartIcon.svg"
           alt="User account"
-          width={35}
-          height={35}
+          width={40}
+          height={40}
         />
       )}
-    </div>
+    </>
   );
 }
 
-export default CartTracker;
+export default CartButton;

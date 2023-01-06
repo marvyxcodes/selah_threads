@@ -22,6 +22,7 @@ function ProductDetails({ product }: any) {
           src={product.imgUrl}
           fill
           alt="Product image"
+          sizes="33vw"
         ></Image>
       </div>
 

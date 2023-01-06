@@ -9,7 +9,15 @@ export default function LoginBtn() {
   if (session) {
     return (
       <>
-        <button onClick={() => signOut()}>Sign out</button>
+        <button onClick={() => signOut()}>
+          <Image
+            className="nav-icon"
+            src="/logout.svg"
+            width={40}
+            height={40}
+            alt="Sign out"
+          />
+        </button>
       </>
     );
   }
@@ -20,8 +28,8 @@ export default function LoginBtn() {
           className="nav-icon"
           src="/userIcon.svg"
           alt="User account"
-          width={35}
-          height={35}
+          width={40}
+          height={40}
         />
       </Link>
     </>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import NavSubMenu from "./NavSubMenu";
 import Link from "next/link";
 import LoginBtn from "./Login-btn";
-import CartTracker from "./CartTracker";
+import CartTracker from "./CartButton";
 
 function Navbar() {
   const [showSubMenu, setShowSubMenu] = useState(false);
