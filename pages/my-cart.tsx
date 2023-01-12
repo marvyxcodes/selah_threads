@@ -49,6 +49,20 @@ export default function MyCart() {
       });
   }
 
+  // React.useEffect(() => {
+  //   // Check to see if this is a redirect back from Checkout
+  //   const query = new URLSearchParams(window.location.search);
+  //   if (query.get("success")) {
+  //     console.log("Order placed! You will receive an email confirmation.");
+  //   }
+
+  //   if (query.get("canceled")) {
+  //     console.log(
+  //       "Order canceled -- continue to shop around and checkout when you’re ready."
+  //     );
+  //   }
+  // }, []);
+
   // getting internal 500 error when submitting cart. figure out the issue.
   let cartElements = cartItems.map((product) => {
     // console.log(product);
@@ -104,7 +118,7 @@ export default function MyCart() {
             <p>Estimated tax: $1.39</p>
             <p>Est. Total: ${cartSubTotal}</p>
 
-            <button type="submit" className={styles.checkoutBtn}>
+            <button type="submit" role="link" className={styles.checkoutBtn}>
               Checkout
             </button>
           </form>

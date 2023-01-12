@@ -41,6 +41,10 @@ module.exports = {
       },
       {
         protocol: "https",
+        hostname: "stripe.com",
+      },
+      {
+        protocol: "https",
         hostname: "images.unsplash.com",
       },
       {
