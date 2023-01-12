@@ -36,12 +36,12 @@ export default function MyCart() {
       }),
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.ok) return res.json();
         return res.json().then((json) => Promise.reject("fail"));
       })
       .then(({ url }) => {
-        console.log(url);
+        // console.log(url);
         window.location = url;
       })
       .catch((e) => {
