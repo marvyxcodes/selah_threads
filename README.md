@@ -8,5 +8,5 @@ An e-commerce site that revolves around anime/manga themed products created with
 * Stripe checkout integration
 * Firebase Mockup DB
 
-### Changes
+### Upcoming Changes
 * Migrating from Firebase DB over to PostgresSQL
