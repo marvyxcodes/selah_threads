@@ -47,17 +47,17 @@ export default function Home() {
           {/* FP - FRONT PAGE MODULE*/}
           <FPModule
             heading="Upcoming"
-            src="/upcomingR.jpg"
+            src="/yeshua_couple.webp"
             url="/product-category/upcoming-releases"
           />
           <FPModule
             heading="Art"
-            src="/hinata.jpg"
+            src="/conquered_the_grave.jpg"
             url="/product-category/art"
           />
           <FPModule
             heading="Limited"
-            src="/orochiStat.jpg"
+            src="/saved_by_grace.webp"
             url="/product-category/limited"
           />
         </section>
