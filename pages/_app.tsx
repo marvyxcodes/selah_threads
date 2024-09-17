@@ -9,6 +9,7 @@ import Head from "next/head";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+    {/* metas created for usage in application PWA's (bookmarks) */}
       <Head>
         <title>Weeb Max</title>
         <meta
